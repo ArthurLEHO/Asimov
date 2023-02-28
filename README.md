@@ -14,10 +14,10 @@ Asimov est notre 2ème projet de groupe de 2ème année. Il a pour principal mis
 # NOTRE ORGANISATION
 Tout en prenant en compte les conditions imoposées par notre professeur via la documentation, nous nous sommes organisés de la manière la plus simple possible qui est la suivante : 
 
-__Comment gérer le Front-End__
+__Gestion du Front-End__
 + Utilisation du framework Bootstrap en CSS.
 
-__Comment gérer le Back-End__
+__Gestion du Back-End__
 + Utilisation du framework NodeJS
 + Utilisation du framework ExpressJS
 
