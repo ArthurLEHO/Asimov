@@ -27,4 +27,4 @@ __Gestion de la base de données__
 ------------------------------------------------------------------------------------------------------------
 
 # GROUPE
-Ce projet est présenté par [COVAREL-DYLAN](https://github.com/DylanCOVAREL) et [LE HO-Arthur](https://github.com/ArthurLEHO)
+Ce projet est présenté par [COVAREL-DYLAN](https://github.com/DylanCOVAREL) et [LE HO-Arthur](https://github.com/ArthurLEHO).
