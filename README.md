@@ -1,5 +1,5 @@
-<p align="center">
-  <img src="public\images\logo.png" />
+<p align="center" width="10">
+  <img src="public\images\logo.png" width="300"/>
 </p>
 
 ------------------------------------------------------------------------------------------------------------
@@ -14,10 +14,10 @@ Asimov est notre 2ème projet de groupe de 2ème année. Il a pour principal mis
 # NOTRE ORGANISATION
 Tout en prenant en compte les conditions imoposées par notre professeur via la documentation, nous nous sommes organisés de la manière la plus simple possible qui est la suivante : 
 
-__Comment gérer le Front-End__
+__Gestion du Front-End__
 + Utilisation du framework Bootstrap en CSS.
 
-__Comment gérer le Back-End__
+__Gestion du Back-End__
 + Utilisation du framework NodeJS
 + Utilisation du framework ExpressJS
 
@@ -27,4 +27,4 @@ __Gestion de la base de données__
 ------------------------------------------------------------------------------------------------------------
 
 # GROUPE
-Ce projet est présenté par [COVAREL-DYLAN](https://github.com/DylanCOVAREL) et [LE HO-Arthur](https://github.com/ArthurLEHO)
+Ce projet est présenté par [COVAREL-DYLAN](https://github.com/DylanCOVAREL) et [LE HO-Arthur](https://github.com/ArthurLEHO).
