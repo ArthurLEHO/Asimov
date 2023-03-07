@@ -1,8 +1,9 @@
-// Affiche la page d'accueil
-async function accueil (req,res) {
-    res.render("accueil.ejs")
+const modele = require('../models/modelAccueil.js');
+
+const test_accueil = (req, res) => {
+    modele.find()
 }
-// Exporte les fonctions
+
 module.exports = {
-    accueil
+    test_accueil,
 }
