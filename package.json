@@ -1,0 +1,24 @@
+{
+  "name": "asimov",
+  "version": "1.0.0",
+  "description": "<p align=\"center\" width=\"10\">\r   <img src=\"public\\images\\logo.png\" width=\"300\"/>\r </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurLEHO/Asimov.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArthurLEHO/Asimov/issues"
+  },
+  "homepage": "https://github.com/ArthurLEHO/Asimov#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}
