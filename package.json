@@ -10,15 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/ArthurLEHO/Asimov.git"
   },
-  "author": "",
+  "author": "Arthur LEHO / Dylan Covarel",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ArthurLEHO/Asimov/issues"
   },
   "homepage": "https://github.com/ArthurLEHO/Asimov#readme",
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
-    "mysql": "^2.18.1"
+    "iniparser": "^1.0.5",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.21"
   }
 }
