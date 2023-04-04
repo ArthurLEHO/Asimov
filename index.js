@@ -19,7 +19,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.use(express.json());
 app.use(express.urlencoded());
-app.listen(3000, () => console.log('le serveur Pharmacie est prêt.'));
+app.listen(3000, () => console.log('Le serveur ASIMOV est prêt.'));
 
 // Définition des routes
 app.get('/', accueilRoutes)
