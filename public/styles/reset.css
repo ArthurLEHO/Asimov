@@ -1,0 +1,26 @@
+/* Utilise en priorité le box-sizing comme valeur */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Enlève le style des listes (points/nombres) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* Permet à l'image de ne pas sortir du container */
+img {
+    max-width: 100%;
+}
+
+/* Supprime les espaces inutiles des tableaux */
+table {
+    border-collapse: collapse;
+}
+
+/* Réinitialise l'opacité des textes des placeholder */
+::placeholder {
+    color: unset;
+}

@@ -214,3 +214,11 @@ body > footer {
   border-radius: 15%;
   margin-left: -50%;
 }
+/* ************************** */
+
+.image{
+  display: flex;
+	margin: auto;
+  width: 50%;
+}
+
