@@ -5,7 +5,7 @@
 ------------------------------------------------------------------------------------------------------------
 
 # PRESENTATION DU PROJET : Asimov
-Le collège Asimov est un établissement scolaire regroupant les classes de la 6e à la terminale.
+Le collège-lycée Asimov est un établissement scolaire regroupant les classes de la 6e à la terminale.
 
 Asimov est notre 2ème projet de groupe de 2ème année. Il a pour principal mission de créer une application web permettant de proposer une structure permettant les expérimentations pédagogiques les plus larges qui permettraient de réunir les "citoyens de notre monde".
 
