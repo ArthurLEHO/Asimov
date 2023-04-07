@@ -23,7 +23,7 @@ const Accueil = {
 
         return new Promise((resolve, reject) => {
 
-            let requeteSQL = "SELECT personnelscolaires.nomUtilisateur, personnelscolaires.motdepasse FROM personnelscolaires"
+            let requeteSQL = "SELECT * FROM eleves, personnelscolaires"
 
             mysqlconnexion.query(requeteSQL, (err, lignes) => {
 

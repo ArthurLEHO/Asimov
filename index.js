@@ -5,6 +5,7 @@ const fs = require('fs');
 const https = require('https');
 const accueilRoutes = require('./routes/routeAccueil.js');
 
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -18,7 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 app.set('port', process.env.PORT || 3000);
 
 // Définition des routes
-app.get('/', accueilRoutes);
+app.use('/', accueilRoutes);
+
 
 
 app.listen(app.get('port'), () => {
