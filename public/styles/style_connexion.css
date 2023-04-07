@@ -30,6 +30,7 @@ body {
     border-radius: 10px;
     z-index: -1;
 }
+
 /* ---------- */
 
 /* Login Card Logo */
@@ -40,6 +41,7 @@ body {
 .login-card-logo img {
     width: 60px;
 }
+
 /* ---------- */
 
 /* Login Card Standard */
@@ -57,6 +59,7 @@ body {
 .login-card a:hover {
     text-decoration: underline;
 }
+
 /* ---------- */
 
 /* Login Card Header */
@@ -74,6 +77,7 @@ body {
     font-size: calc(1rem * .8);
     opacity: .8;
 }
+
 /* ---------- */
 
 /* Login Card Form */
@@ -108,6 +112,7 @@ body {
     font-size: calc(1rem * .8);
     margin-bottom: .5rem;
 }
+
 /* ---------- */
 
 /* Login Card Footer */
@@ -115,6 +120,7 @@ body {
     margin-top: 1.5rem;
     font-size: calc(1rem * .8);
 }
+
 /* ---------- */
 
 /* Login Card Form Elements */
@@ -177,4 +183,5 @@ body {
     }
 
 }
+
 /* ---------- */

@@ -1,28 +1,25 @@
-const express = require('express')
-const ejs = require('ejs')
-const path = require('path')
-const fs = require('fs')
-const https = require('https')
-const port = 3000
+const express = require('express');
+const ejs = require('ejs');
+const path = require('path');
+const fs = require('fs');
+const https = require('https');
+const accueilRoutes = require('./routes/routeAccueil.js');
 
-const accueilRoutes = require('./routes/routeAccueil.js')
-const directionRoutes = require('./routes/routeDirection.js')
-const elevesRoutes = require('./routes/routeEleves.js')
-const professeursRoutes = require('./routes/routeProfesseurs.js')
+const app = express();
 
-
-let app = express()
-app.set('view engine', 'ejs')
-app.use(express.static('views'))
-app.use(express.static('public'))
-app.use(express.static(__dirname + '/public'))
+app.set('view engine', 'ejs');
+app.use(express.static('views'));
+app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(express.json());
-app.use(express.urlencoded());
-app.listen(3000, () => console.log('Le serveur ASIMOV est prêt.'));
+app.use(express.urlencoded({ extended: true }));
+
+app.set('port', process.env.PORT || 3000);
 
 // Définition des routes
-app.get('/', accueilRoutes)
-app.use('/direction', directionRoutes)
-app.use('/eleves', elevesRoutes)
-app.use('/professeurs', professeursRoutes)
+app.get('/', accueilRoutes);
+
+app.listen(app.get('port'), () => {
+  console.log(`Le serveur ASIMOV est prêt sur le port ${app.get('port')}`);
+});

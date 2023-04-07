@@ -17,13 +17,13 @@ mysqlconnexion.connect((err) => {
 
 })
 
-const Accueil = {
+const ConnexionDirecteur = {
 
     async connexion(){
 
         return new Promise((resolve, reject) => {
 
-            let requeteSQL = "SELECT personnelscolaires.nomUtilisateur, personnelscolaires.motdepasse FROM personnelscolaires"
+            let requeteSQL = "SELECT personnelscolaires.nomUtilisateur, personnelscolaires.motdepasse FROM personnelscolaires WHERE status = 'Directeur'"
 
             mysqlconnexion.query(requeteSQL, (err, lignes) => {
 
@@ -42,5 +42,5 @@ const Accueil = {
 
 module.exports = {
     
-    Accueil
+    ConnexionDirecteur
 }
