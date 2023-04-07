@@ -3,21 +3,18 @@
 <html lang="en">
 <body>
 
-    <div class="bckgrnd">
-        <div class="container w-50 d-flex justify-content-center p-4 mb-2">
-            <h1>Collège-Lycée ASIMOV</h1>
-        </div><br>
-        
-        <div class="image">
-            <img src="../public/images/logo.png" alt="logo">
+    <h1 class="d-flex justify-content-center">Collège-Lycée ASIMOV</h1>
+    <p><br></p>
+
+
+    <div class="d-flex justify-content-space-evenly">
+        <img src="/images/logo.png" class="logoAccueil">
+
+        <div class="container d-flex flex-column text-center w-25 h-50 p-5 fondBoutons">
+            <a href="http://localhost:3000/direction"><button type="button" class="btn btn-lg button1 btn btn-light btn-lg btn-block"><img src="/images/direction.png" class="photoMenu">Direction</button></a><br>
+            <a href="http://localhost:3000/professeurs"><button type="button" class="btn btn-square-xl button2 btn btn-light btn-lg btn-block"><img src="/images/prof.png" class="photoMenu">Professeurs</button></a><br>
+            <a href="http://localhost:3000/eleves"><button type="button" class="btn btn-square-xl button3 btn btn-light btn-lg btn-block"><img src="/images/student.png" class="photoMenu">Élèves</button></a>
         </div>
-        
-        <div class="btn btn-light btn-lg btn-block">    
-            <a href="http://localhost:3000/direction"><button type="button" class="btn btn-default btn-lg btn-custom-lg button1">Direction</button></a>
-            <a href="http://localhost:3000/professeurs"><button type="button" class="btn btn-square-xl button2">Professeurs</button></a>
-            <a href="http://localhost:3000/eleves"><button type="button" class="btn btn-square-xl button3">Élèves</button></a>
-        </div>
-        
     </div>
     
 </body>
