@@ -10,17 +10,16 @@ const controllerMain = {
 		res.render("connexion");
 	},
 
-	async controleConnexionDirecteur(req, res) {
+	async controleConnexion(req, res) {
 		try {
 			const data = await modelAccueil.Accueil.connexion();
 
 			let pseudo = req.body.pseudo;
 			let mdp = req.body.mdp;
-			let statut = req.body.statut;
 
 			for (const element of data) {
-				if (element.nom === pseudo && element.motdepasse === mdp && element.statut === statut) {
-					res.render("accueil");
+				if (element.el_nom == pseudo && element.el_motdepasse == mdp) {
+					res.render("menu");
 					return;
 				}
 			}
