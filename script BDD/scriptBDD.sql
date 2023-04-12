@@ -39,7 +39,7 @@ create table Eleves (
     el_classe varchar(20) NOT NULL,
     el_motdepasse varchar(25) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (classe) REFERENCES Classes(nom)
+    FOREIGN KEY (el_classe) REFERENCES Classes(nom)
 );
 
 INSERT INTO Eleves (el_nom, el_prenom, el_classe, el_motdepasse) VALUES ('Covarel', 'Dylan', '6ème', 'testDylan');
