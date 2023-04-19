@@ -19,7 +19,7 @@ const controllerConnexionEleve= {
 
 				if(data[element].el_nom == pseudo && data[element].el_motdepasse == mdp){
 
-					res.render("menu")
+					res.render("menuEleve")
 					return
 				}
 			}

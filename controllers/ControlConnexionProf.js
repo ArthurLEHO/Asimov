@@ -19,7 +19,7 @@ const controllerConnexionProf= {
 
 				if(data[element].ps_nom == pseudo && data[element].ps_motdepasse == mdp){
 
-					res.render("menu")
+					res.render("menuProf")
 					return
 				}
 			}
