@@ -1,4 +1,4 @@
-const modelConnexionDirecteur = require('../models/modelConnexionProf');
+const modelConnexionProf = require('../models/modelConnexionProf');
 
 const controllerConnexionProf= {
 
