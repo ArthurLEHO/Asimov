@@ -1,6 +1,10 @@
 const modelConnexionDirecteur = require('../models/modelConnexionDirecteur');
 
 const controllerConnexionDirecteur= {
+
+	affichageConnexionDirecteur(req, res) {
+		res.render("connexionDirecteur");
+	},
 	
 	async controleConnexion(req, res){
 
@@ -13,32 +17,20 @@ const controllerConnexionDirecteur= {
 
 			for(element in data){
 
-				if(data[element].nomUtilisateur == pseudo && data[element].motdepasse == mdp){
+				if(data[element].ps_nom == pseudo && data[element].ps_motdepasse == mdp){
 
-					res.render("main")
+					res.render("menu")
 					return
 				}
 			}
 
-			res.render("connexion")
+			res.render("connexionDirecteur")
 
 		} catch (error) {
 
 			console.log(error)
 		}
 	},
-
-	affichageAccueil(req, res){
-
-		try {
-
-            res.render("connexion")
-
-		} catch (error) {
-
-			console.log(error)
-		}
-	}
 }
 
 module.exports = controllerConnexionDirecteur
