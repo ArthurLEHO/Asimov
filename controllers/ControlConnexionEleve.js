@@ -1,4 +1,4 @@
-const modelConnexionDirecteur = require('../models/modelConnexionEleve');
+const modelConnexionEleve = require('../models/modelConnexionEleve');
 
 const controllerConnexionEleve= {
 
