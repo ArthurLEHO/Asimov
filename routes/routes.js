@@ -4,6 +4,7 @@ const directeurCtrl = require('../controllers/ControlConnexionDirecteur.js');
 const profCtrl = require('../controllers/ControlConnexionProf.js');
 const eleveCtrl = require('../controllers/ControlConnexionEleve.js');
 const noteCtrl = require('../controllers/ControlNote.js');
+const matiereCtrl = require('../controllers/ControlMatiere.js');
 const router = express.Router() ;
 
 router.get('/', mainCtrl.affichageAccueil);
@@ -16,5 +17,8 @@ router.post('/connexionEleve', eleveCtrl.controleConnexion);
 router.get('/suiviNotes', eleveCtrl.affichageSuiviNotes);
 router.get('/deconnexion', mainCtrl.deconnexion);
 router.get('/addNotes', noteCtrl.ajouterNote);
+router.get('/addMatiere', matiereCtrl.ajouterMatiere);
+router.get('/addProfesseur', profCtrl.ajouterProfesseur);
+router.get('/modifierNotes', noteCtrl.ajouterNote);
 
 module.exports = router 
