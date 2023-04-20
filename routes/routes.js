@@ -12,5 +12,6 @@ router.get('/connexionProf', profCtrl.affichageConnexionProf);
 router.post('/connexionProf', profCtrl.controleConnexion);
 router.get('/connexionEleve', eleveCtrl.affichageConnexionEleve);
 router.post('/connexionEleve', eleveCtrl.controleConnexion);
+router.get('/suiviNotes', eleveCtrl.affichageSuiviNotes);
 
 module.exports = router 
