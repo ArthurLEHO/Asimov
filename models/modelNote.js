@@ -1,8 +1,8 @@
-const mysql2 = require('mysql2')
+const mysql = require('mysql')
 const iniparser = require('iniparser')
 let configDB = iniparser.parseSync('./DB.ini')
 
-let mysqlconnexion = mysql2.createConnection({
+let mysqlconnexion = mysql.createConnection({
 
     host: configDB['dev']['host'],
     user: configDB['dev']['user'],

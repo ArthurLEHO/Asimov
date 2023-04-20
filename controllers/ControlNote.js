@@ -93,7 +93,7 @@ const controllerClasse = {
         }
     },
 
-    //Fonction pour le principal ou professeur : permet d'ajouter' une note
+    //Fonction pour le principal ou professeur : permet d'ajouter une note
     //Le principal peut ajouter n'importe quelle note
     //Le professeur ne peut ajouter de notes que dans sa matière
     async ajouterNote(req, res) {
