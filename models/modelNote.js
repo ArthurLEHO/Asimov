@@ -23,7 +23,7 @@ const Notes = {
     async afficherNotesEleve(req, res){
 
         let id = req.params.id
-        let requeteSQL = "SELECT Matiere.matiere_Nom, Note.note_Id, Note.note_Valeur FROM Eleve INNER JOIN Note ON Eleve.eleve_Id = Note.note_IdEleve INNER JOIN Matiere ON Note.note_IdMatiere = Matiere.matiere_Id WHERE Eleve.eleve_Id = ? "
+        let requeteSQL = "SELECT mt_nom, nt_id, nt_resultat FROM Eleves INNER JOIN Notes ON el_id = nt_idEleve INNER JOIN Matieres ON nt_matiere = mt_id WHERE el_id = ? "
         
         //On initialise un cookie pour pouvoir savoir vers quel élève rediriger dans le controller
         res.cookie('idEleve', id)
@@ -48,7 +48,7 @@ const Notes = {
     async afficherUneNote(req) {
 
         let id = req.params.id
-        let requeteSQL = "SELECT * FROM note WHERE note_Id = ?"
+        let requeteSQL = "SELECT * FROM notes WHERE nt_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -72,7 +72,7 @@ const Notes = {
         let eleve = req.cookies.idEleve
         let matiere = req.body.matiere
         let valeur = req.body.valeur
-        let requeteSQL = "INSERT INTO note (note_IdEleve, note_IdMatiere, note_Valeur) VALUES(?,?,?)"
+        let requeteSQL = "INSERT INTO notes (nt_idEleve, nt_matiere, nt_resultat) VALUES(?,?,?)"
 
         return new Promise((resolve, reject)=>{
 
@@ -94,7 +94,7 @@ const Notes = {
     async supprimerNote(req){
 
         let id = req.params.id
-        let requeteSQL = "DELETE FROM note WHERE note_Id = ?"
+        let requeteSQL = "DELETE FROM notes WHERE nt_id = ?"
 
         return new Promise((resolve, reject)=>{
 
@@ -117,7 +117,7 @@ const Notes = {
 
         let id = req.params.id
         let valeur = req.body.valeur
-        let requeteSQL = "UPDATE note SET note_Valeur = ? WHERE note_Id = ?"
+        let requeteSQL = "UPDATE notes SET nt_resultat = ? WHERE nt_id = ?"
 
         return new Promise((resolve, reject)=>{
 
