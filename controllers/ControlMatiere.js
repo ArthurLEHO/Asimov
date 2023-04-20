@@ -1,52 +1,24 @@
-const modelConnexionProf = require('../models/modelConnexionProf');
+const modelMatiere = require('../models/modelMatiere');
+const modelProfesseurs = require('../models/modelConnexionProf');
+const modelDirecteur = require('../models/modelConnexionDirecteur');
+const cookieParser = require('cookie-parser');
 
-const controllerConnexionProf = {
+const controllerClasse = {
 
-	affichageConnexionProf(req, res) {
-		res.render("connexionProf");
-	},
-
-	async controleConnexion(req, res) {
-
-		try {
-
-			const data = await modelConnexionProf.ConnexionProf.connexion()
-
-			let pseudo = req.body.pseudo
-			let mdp = req.body.mdp
-
-			for (element in data) {
-
-				if (data[element].ps_nom == pseudo && data[element].ps_motdepasse == mdp) {
-
-					res.cookie('role', data[element].ps_statut)
-					res.cookie('id', data[element].ps_id)
-					res.render("menuProf", { dataProf: data[element], cookie: data[element].ps_statut })
-					return
-				}
-			}
-
-			res.render("connexionProf")
-
-		} catch (error) {
-
-			console.log(error)
-		}
-	},
-
-	//Fonction pour le principal : permet d'afficher les professeurs de l'établissement
-	async affichageProfesseurs(req, res) {
+	//Fonction pour le principal : permet d'afficher les matières
+	async affichageMatiere(req, res) {
 
 		//Sécurité au niveau du serveur : si token principal renvoit les données, sinon renvoit sur une page de refus
 		if (req.cookies.role == "Principal") {
 
 			try {
 
-				const data1 = await modelProfesseur.Professeurs.afficherProfesseurs2()
+				const data1 = await modelMatiere.Matieres.afficherMatieres()
+				const data2 = await modelProfesseurs.Professeurs.afficherProfesseurs()
 
 				if (data1) {
 
-					res.render("professeurs", { cookie: req.cookies.role, dataTotale: data1 })
+					res.render("matieres", { dataMatiere: data1, cookie: req.cookies.role, dataProfesseur: data2 })
 
 				} else {
 
@@ -71,20 +43,20 @@ const controllerConnexionProf = {
 		}
 	},
 
-	//Fonction pour le principal : permet d'afficher un professeur en particulier
-	async affichageUnProfesseur(req, res) {
+	//Fonction pour le principal : permet d'afficher une matière
+	async affichageUneMatiere(req, res) {
 
 		//Sécurité au niveau du serveur : si token principal renvoit les données, sinon renvoit sur une page de refus
 		if (req.cookies.role == "Principal") {
 
 			try {
 
-				const data1 = await modelProfesseur.Professeurs.afficherUnProfesseur(req)
-				const data2 = await modelMatiere.Matieres.afficherMatieres()
+				const data1 = await modelMatiere.Matieres.afficherUneMatiere(req)
+				const data2 = await modelProfesseurs.Professeurs.afficherProfesseurs()
 
 				if (data1) {
 
-					res.render("modifierProfesseurs", { dataProfesseur: data1, dataMatiere: data2 })
+					res.render("modifierMatieres", { dataMatiere: data1, cookie: req.cookies.role, dataProfesseur: data2 })
 
 				} else {
 
@@ -109,19 +81,19 @@ const controllerConnexionProf = {
 		}
 	},
 
-	//Fonction pour le principal : permet d'ajouter un professeur à l'établissement
-	async ajouterProfesseur(req, res) {
+	//Fonction pour le principal : permet d'ajouter une matière
+	async ajouterMatiere(req, res) {
 
 		//Sécurité au niveau du serveur : si token principal renvoit les données, sinon renvoit sur une page de refus
 		if (req.cookies.role == "Principal") {
 
 			try {
 
-				const data = await modelProfesseur.Professeurs.ajouterProfesseur(req)
+				const data = await modelMatiere.Matieres.ajouterMatiere(req)
 
 				if (data) {
 
-					res.redirect("/professeurs");
+					res.redirect("/matieres");
 
 				} else {
 
@@ -146,19 +118,19 @@ const controllerConnexionProf = {
 		}
 	},
 
-	//Fonction pour le principal : permet de supprimer un professeur de l'établissement
-	async supprimerProfesseur(req, res) {
+	//Fonction pour le principal : permet de supprimer une matière
+	async supprimerMatiere(req, res) {
 
 		//Sécurité au niveau du serveur : si token principal renvoit les données, sinon renvoit sur une page de refus
 		if (req.cookies.role == "Principal") {
 
 			try {
 
-				const data = await modelProfesseur.Professeurs.supprimerProfesseur(req)
+				const data = await modelMatiere.Matieres.supprimerMatiere(req)
 
 				if (data) {
 
-					res.redirect("/professeurs");
+					res.redirect("/matieres");
 
 				} else {
 
@@ -183,19 +155,19 @@ const controllerConnexionProf = {
 		}
 	},
 
-	//Fonction pour le principal : permet de modifier un professeur de l'établissement
-	async modifierProfesseur(req, res) {
+	//Fonction pour le principal : permet de modifier une matière
+	async modifierMatiere(req, res) {
 
 		//Sécurité au niveau du serveur : si token principal renvoit les données, sinon renvoit sur une page de refus
 		if (req.cookies.role == "Principal") {
 
 			try {
 
-				const data = await modelProfesseur.Professeurs.modifierProfesseur(req)
+				const data = await modelMatiere.Matieres.modifierMatiere(req)
 
 				if (data) {
 
-					res.redirect("/professeurs");
+					res.redirect("/matieres");
 
 				} else {
 
@@ -221,4 +193,4 @@ const controllerConnexionProf = {
 	}
 }
 
-module.exports = controllerConnexionProf
+module.exports = controllerClasse

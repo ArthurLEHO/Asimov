@@ -19,7 +19,9 @@ const controllerConnexionDirecteur= {
 
 				if(data[element].ps_nom == pseudo && data[element].ps_motdepasse == mdp){
 
-					res.render("menuDirection")
+					res.cookie('role', data[0].ps_statut)
+					res.cookie('id', data[0].ps_id)
+					res.render("menuDirection", {dataDirecteur:data[element], cookie:data[element].ps_statut})
 					return
 				}
 			}
