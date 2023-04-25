@@ -94,9 +94,13 @@ const controllerClasse = {
     },
 
     async afficherAjouterNotes(req, res) {
-        res.render('addNotes');
+        if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
+            res.render('addNotes');
+        } else {
+            res.render("refus")
+        }
     },
-    
+
     //Fonction pour le principal ou professeur : permet d'ajouter une note
     //Le principal peut ajouter n'importe quelle note
     //Le professeur ne peut ajouter de notes que dans sa matière
@@ -176,7 +180,11 @@ const controllerClasse = {
     },
 
     async afficherModifierNote(req, res) {
-        res.render('modifierNotes');
+        if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
+            res.render('modifierNotes');
+        } else {
+            res.render("refus")
+        }
     },
 
     //Fonction pour le principal ou professeur : permet de modifier une note
