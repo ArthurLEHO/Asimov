@@ -16,7 +16,7 @@ router.get('/connexionEleve', eleveCtrl.affichageConnexionEleve);
 router.post('/connexionEleve', eleveCtrl.controleConnexion);
 router.get('/suiviNotes', eleveCtrl.affichageSuiviNotes);
 router.get('/deconnexion', mainCtrl.deconnexion);
-router.get('/addNotes', noteCtrl.ajouterNote);
+router.get('/addNotes', noteCtrl.afficherAjouterNotes);
 router.get('/addMatiere', matiereCtrl.ajouterMatiere);
 router.get('/addProfesseur', profCtrl.ajouterProfesseur);
 router.get('/modifierNotes', noteCtrl.ajouterNote);

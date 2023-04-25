@@ -67,9 +67,9 @@ const Notes = {
     },
 
     //Fonction pour le principal ou les professeurs : permet d'ajouter une note à un élève
-    async ajouterNote(req){
+    async ajouterNotes(req){
 
-        let eleve = req.cookies.idEleve
+        let eleve = req.body.idEleve
         let matiere = req.body.matiere
         let valeur = req.body.valeur
         let requeteSQL = "INSERT INTO notes (nt_idEleve, nt_matiere, nt_resultat) VALUES(?,?,?)"

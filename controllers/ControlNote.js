@@ -17,7 +17,7 @@ const controllerClasse = {
                 const data1 = await modelNote.Notes.afficherNotesEleve(req, res)
                 const data2 = await modelMatiere.Matieres.afficherMatieres()
                 if (data1) {
-                    res.render("notes", { dataNotes: data1, dataMatieres: data2, cookie: req.cookies.role, idEleve: req.cookies.idEleve })
+                    res.render("suiviNotes", { dataNotes: data1, dataMatieres: data2, cookie: req.cookies.role, idEleve: req.cookies.idEleve })
 
                 } else {
                     res.render("probleme", { cookie: req.cookies.role })
@@ -93,6 +93,10 @@ const controllerClasse = {
         }
     },
 
+    async afficherAjouterNotes(req, res) {
+        res.render('addNotes');
+    },
+    
     //Fonction pour le principal ou professeur : permet d'ajouter une note
     //Le principal peut ajouter n'importe quelle note
     //Le professeur ne peut ajouter de notes que dans sa matière
@@ -103,7 +107,7 @@ const controllerClasse = {
 
             try {
 
-                const data = await modelNote.Notes.ajouterNote(req)
+                const data = await modelNote.Notes.ajouterNotes(req)
 
                 if (data) {
 

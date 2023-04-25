@@ -32,35 +32,11 @@
                             <div>
                                 <label for=""> Élève : </label>
                                 <input required list="eleve" id="eleve" name="eleve" placeholder="Élève*">
-                                <datalist id="eleve">
-                                    <!--Utilisation du framework Express.JS synchro à la bdd --> 
-                                    <% lignes.forEach((ligne, index)=>{%>
-                                        <option id=<%=ligne.id%>>
-                                            <%= ligne.nom%>
-                                        </option>
-                                        <%})%>
-                                </datalist>
                                 <button type="submit"> Confirmer </button>
                             </div>
                         </form>
 
-                            <!-- <script>
-                                <%= lignes %>
-                                var eleve = {
-                                    ligne.value: ['value=<%= lignes %> id=<%= lignes.id%>']
-                                }
-                            </script> -->
-
-                            <!-- A METTRE DANS JS -->
-                            <!-- Afficher + Datalist page suppr joueur
-                            .get('/supprimerJoueur', function (req, res) {
-                                var query = "SELECT id, nom, prenom FROM fff GROUP BY nom"
-                                mysqlconnexion.query(query, (err, lignes) => {
-                                    // console.log(lignes);
-                                    res.render('supprimerJoueur'/*Page EJS demandée*/, { lignes: lignes }); /*Arguments/Paramètres envoyés à la page*/
-                                });  
-                            }) -->
-                            <!--------------------------------------------->
+                            
 
                         <!-- Ajout de l'espace -->
                         <div class="m-2"></div>
