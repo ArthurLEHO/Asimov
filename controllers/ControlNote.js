@@ -41,17 +41,17 @@ const controllerClasse = {
         }
     },
 
-    async redirectionNoteEleve(req, res) {
+    // async redirectionNoteEleve(req, res) {
 
-        if (req.cookies.role == "Eleve") {
+    //     if (req.cookies.role == "Eleve") {
 
-            res.redirect("/notes/notesEleve/" + req.cookies.id);
+    //         res.redirect("/notes/notesEleve/" + req.cookies.id);
 
-        } else {
+    //     } else {
 
-            res.render("refus")
-        }
-    },
+    //         res.render("refus")
+    //     }
+    // },
 
 
     //Fonction pour le principal ou professeur : permet d'afficher une note en particulier
@@ -103,7 +103,7 @@ const controllerClasse = {
     async ajouterNote(req, res) {
 
         //Sécurité au niveau du serveur : si token principal renvoit les données, sinon renvoit sur une page de refus
-        if (req.cookies.role == "Principal") {
+        if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
 
             try {
 
@@ -142,7 +142,7 @@ const controllerClasse = {
     async supprimerNote(req, res) {
 
         //Sécurité au niveau du serveur : si token principal renvoit les données, sinon renvoit sur une page de refus
-        if (req.cookies.role == "Principal") {
+        if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
 
             try {
 
@@ -185,7 +185,7 @@ const controllerClasse = {
     async modifierNote(req, res) {
 
         //Sécurité au niveau du serveur : si token principal renvoit les données, sinon renvoit sur une page de refus
-        if (req.cookies.role == "Principal") {
+        if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
 
             try {
 
