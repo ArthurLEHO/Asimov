@@ -175,6 +175,10 @@ const controllerClasse = {
         }
     },
 
+    async afficherModifierNote(req, res) {
+        res.render('modifierNotes');
+    },
+
     //Fonction pour le principal ou professeur : permet de modifier une note
     //Le principal peut modifier n'importe quelle note
     //Le professeur ne peut modifier que les notes de sa matière

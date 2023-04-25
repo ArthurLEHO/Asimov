@@ -19,6 +19,6 @@ router.get('/deconnexion', mainCtrl.deconnexion);
 router.get('/addNotes', noteCtrl.afficherAjouterNotes);
 router.get('/addMatiere', matiereCtrl.ajouterMatiere);
 router.get('/addProfesseur', profCtrl.ajouterProfesseur);
-router.get('/modifierNotes', noteCtrl.ajouterNote);
+router.get('/modifierNotes', noteCtrl.afficherModifierNote);
 
 module.exports = router 
