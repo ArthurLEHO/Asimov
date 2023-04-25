@@ -1,4 +1,5 @@
 const modelAccueil = require('../models/modelAccueil');
+const cookieParser = require('cookie-parser');
 
 const controllerMain = {
 

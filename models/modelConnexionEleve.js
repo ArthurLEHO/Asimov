@@ -42,7 +42,7 @@ const ConnexionEleve = {
     //Fonction pour le proviseur : permet d'afficher tous les élèves de l'établissement dans l'ordre alphabétique
     async afficherLesEleves() {
 
-        let requeteSQL = "SELECT * FROM eleve ORDER BY el_Nom"
+        let requeteSQL = "SELECT * FROM eleves ORDER BY el_Nom"
 
         return new Promise((resolve, reject) => {
 
@@ -65,7 +65,7 @@ const ConnexionEleve = {
     async afficherUnEleve(req) {
 
         let id = req.params.id
-        let requeteSQL = "SELECT * FROM eleve INNER JOIN classe ON eleve_IdClasse = classe_Id WHERE eleve_Id = ?"
+        let requeteSQL = "SELECT * FROM eleves INNER JOIN classes ON el_idClasse = cl_id WHERE el_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -87,7 +87,7 @@ const ConnexionEleve = {
     async afficherElevesClasse(req, res) {
 
         let id = req.params.id
-        let requeteSQL = "SELECT * FROM eleve WHERE eleve_IdClasse = ? ORDER BY el_Nom"
+        let requeteSQL = "SELECT * FROM eleves WHERE el_idClasse = ? ORDER BY el_nom"
 
         //On initialise un cookie pour pouvoir retrouver la classe dans la redirection depuis le controller
         res.cookie('idClasse', id)
@@ -114,7 +114,7 @@ const ConnexionEleve = {
         let nom = req.body.nom
         let prenom = req.body.prenom
         let classe = req.body.classe
-        let requeteSQL = "INSERT INTO eleve (el_Nom, el_Prenom, el_IdClasse) VALUES(?,?,?,?)"
+        let requeteSQL = "INSERT INTO eleves (el_nom, el_prenom, el_idClasse) VALUES(?,?,?,?)"
 
         return new Promise((resolve, reject) => {
 
@@ -136,7 +136,7 @@ const ConnexionEleve = {
     async supprimerEleve(req) {
 
         let id = req.params.id
-        let requeteSQL = "DELETE FROM eleve WHERE el_Id = ?"
+        let requeteSQL = "DELETE FROM eleves WHERE el_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -162,7 +162,7 @@ const ConnexionEleve = {
         let prenom = req.body.prenom
         let classe = req.body.classe
 
-        let requeteSQL = "UPDATE eleve SET el_Nom = ?, el_Prenom = ?, el_IdClasse = ? WHERE el_Id = ?"
+        let requeteSQL = "UPDATE eleves SET el_nom = ?, el_prenom = ?, el_idClasse = ? WHERE el_id = ?"
 
         return new Promise((resolve, reject) => {
 

@@ -23,7 +23,7 @@ const ConnexionDirecteur = {
 
         return new Promise((resolve, reject) => {
 
-            let requeteSQL = "SELECT ps_nom, ps_motdepasse FROM personnelscolaires WHERE ps_statut = 'Principal'"
+            let requeteSQL = "SELECT * FROM personnelscolaires WHERE ps_statut = 'Principal'"
 
             mysqlconnexion.query(requeteSQL, (err, lignes) => {
 

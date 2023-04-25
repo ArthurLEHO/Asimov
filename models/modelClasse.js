@@ -22,7 +22,7 @@ const Classes = {
     //Fonction pour le proviseur : permet d'afficher toutes les classes de l'établissement
     async afficherToutesClasses() {
 
-        let requeteSQL = "SELECT * FROM classe ORDER BY classe_Nom"
+        let requeteSQL = "SELECT * FROM classes ORDER BY cl_nom"
 
         return new Promise((resolve, reject) => {
 
@@ -45,7 +45,7 @@ const Classes = {
     async afficherMesClasses(req) {
 
         let id = req.cookies.id
-        let requeteSQL = "SELECT classe_Nom FROM classe, professeur, affectation WHERE classe_Id = affectation_IdClasse AND professeur_Id = affectation_IdProfesseur AND professeur_Id = ?"
+        let requeteSQL = "SELECT cl_nom FROM classes, personnelscolaires WHERE cl_IdProf = ps_id AND ps_statut = 'Professeur' AND ps_id = ? "
 
         return new Promise((resolve, reject) => {
 
@@ -67,7 +67,7 @@ const Classes = {
     async afficherUneClasse(req) {
 
         let id = req.params.id
-        let requeteSQL = "SELECT * FROM classe WHERE classe_Id = ?"
+        let requeteSQL = "SELECT * FROM classes WHERE cl_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -90,7 +90,7 @@ const Classes = {
 
         let nom = req.body.nom
         let professeur = req.body.professeur
-        let requeteSQL = "INSERT INTO classe (classe_Nom, classe_IdProfesseurPrincipal) VALUES(?,?)"
+        let requeteSQL = "INSERT INTO classes (cl_nom, cl_IdProf) VALUES(?,?)"
 
         return new Promise((resolve, reject) => {
 
@@ -112,7 +112,7 @@ const Classes = {
     async supprimerClasse(req) {
 
         let id = req.params.id
-        let requeteSQL = "DELETE FROM classe WHERE classe_Id = ?"
+        let requeteSQL = "DELETE FROM classes WHERE cl_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -136,7 +136,7 @@ const Classes = {
         let id = req.params.id
         let nom = req.body.nom
         let professeur = req.body.professeur
-        let requeteSQL = "UPDATE classe SET classe_Nom = ?, classe_IdProfesseurPrincipal = ? WHERE classe_Id = ?"
+        let requeteSQL = "UPDATE classes SET cl_nom = ?, cl_IdProf = ? WHERE cl_id = ?"
 
         return new Promise((resolve, reject) => {
 

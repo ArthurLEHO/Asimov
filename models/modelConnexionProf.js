@@ -23,7 +23,7 @@ const ConnexionProf = {
 
         return new Promise((resolve, reject) => {
 
-            let requeteSQL = "SELECT ps_nom, ps_motdepasse FROM personnelscolaires WHERE ps_statut = 'Professeur'"
+            let requeteSQL = "SELECT * FROM personnelscolaires WHERE ps_statut = 'Professeur'"
 
             mysqlconnexion.query(requeteSQL, (err, lignes) => {
 
@@ -42,7 +42,7 @@ const ConnexionProf = {
     //Fonction pour le principal : permet d'afficher la liste des professeurs
     async afficherProfesseurs() {
 
-        let requeteSQL = "SELECT * FROM professeur ORDER BY professeur_Nom"
+        let requeteSQL = "SELECT * FROM personnelscolaires ORDER BY ps_nom"
 
         return new Promise((resolve, reject) => {
 
@@ -63,7 +63,7 @@ const ConnexionProf = {
     //Fonction pour le principal : permet d'afficher chaque professeur avec la matière qu'il enseigne'
     async afficherProfesseurs2() {
 
-        let requeteSQL = "SELECT * FROM professeur LEFT JOIN matiere ON professeur_Id = matiere_IdProfesseur ORDER BY professeur_Nom"
+        let requeteSQL = "SELECT * FROM personnelscolaires LEFT JOIN matieres ON ps_id = mt_IdProf ORDER BY ps_nom"
 
         return new Promise((resolve, reject) => {
 
@@ -85,7 +85,7 @@ const ConnexionProf = {
     async afficherUnProfesseur(req) {
 
         let id = req.params.id
-        let requeteSQL = "SELECT * FROM professeur WHERE professeur_Id = ?"
+        let requeteSQL = "SELECT * FROM personnelscolaires WHERE ps_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -109,7 +109,7 @@ const ConnexionProf = {
         let nom = req.body.nom
         let prenom = req.body.prenom
         let mdp = req.body.mdp
-        let requeteSQL = "INSERT INTO professeur (professeur_Nom, professeur_Prenom, professeur_Mdp, professeur_Role) VALUES(?,?, password(?), 'Professeur')"
+        let requeteSQL = "INSERT INTO personnelscolaires (ps_nom, ps_prenom, ps_motdepasse, ps_statut) VALUES(?,?, ?, 'Professeur')"
 
         return new Promise((resolve, reject) => {
 
@@ -131,7 +131,7 @@ const ConnexionProf = {
     async supprimerProfesseur(req) {
 
         let id = req.params.id
-        let requeteSQL = "DELETE FROM professeur WHERE professeur_Id = ?"
+        let requeteSQL = "DELETE FROM personnelscolaires WHERE ps_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -155,7 +155,7 @@ const ConnexionProf = {
         let id = req.params.id
         let nom = req.body.nom
         let prenom = req.body.prenom
-        let requeteSQL = "UPDATE professeur SET professeur_Nom = ?, professeur_Prenom = ? WHERE professeur_Id = ?"
+        let requeteSQL = "UPDATE personnelscolaires SET ps_nom = ?, ps_prenom = ? WHERE ps_id = ?"
 
         return new Promise((resolve, reject) => {
 

@@ -1,4 +1,5 @@
 const modelConnexionDirecteur = require('../models/modelConnexionDirecteur');
+const cookieParser = require('cookie-parser');
 
 const controllerConnexionDirecteur= {
 
@@ -16,7 +17,7 @@ const controllerConnexionDirecteur= {
 			let mdp = req.body.mdp
 
 			for(element in data){
-
+				console.log(data[element])
 				if(data[element].ps_nom == pseudo && data[element].ps_motdepasse == mdp){
 
 					res.cookie('role', data[element].ps_statut)

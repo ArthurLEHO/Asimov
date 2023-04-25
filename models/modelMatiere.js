@@ -22,7 +22,7 @@ const Matieres = {
     //Fonction pour le proviseur : permet d'afficher chaque matière avec le professeur qui l'enseigne
     async afficherMatieres() {
 
-        let requeteSQL = "SELECT * FROM matiere LEFT JOIN professeur ON matiere_IdProfesseur = professeur_Id ORDER BY matiere_Nom"
+        let requeteSQL = "SELECT * FROM matieres LEFT JOIN professeur ON mt_IdProfesseur = ps_id ORDER BY mt_nom"
 
         return new Promise((resolve, reject) => {
 
@@ -45,7 +45,7 @@ const Matieres = {
     async afficherUneMatiere(req) {
 
         let id = req.params.id
-        let requeteSQL = "SELECT * FROM matiere WHERE matiere_Id = ?"
+        let requeteSQL = "SELECT * FROM matieres WHERE mt_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -68,7 +68,7 @@ const Matieres = {
 
         let nom = req.body.nom
         let professeur = req.body.professeur
-        let requeteSQL = "INSERT INTO matiere (matiere_Nom, matiere_IdProfesseur) VALUES(?,?)"
+        let requeteSQL = "INSERT INTO matieres (mt_nom, mt_IdProfesseur) VALUES(?,?)"
 
         return new Promise((resolve, reject) => {
 
@@ -109,7 +109,7 @@ const Matieres = {
     async supprimerMatiere(req) {
 
         let id = req.params.id
-        let requeteSQL = "DELETE FROM matiere WHERE matiere_Id = ?"
+        let requeteSQL = "DELETE FROM matieres WHERE mt_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -133,7 +133,7 @@ const Matieres = {
         let id = req.params.id
         let nom = req.body.nom
         let professeur = req.body.professeur
-        let requeteSQL = "UPDATE matiere SET matiere_Nom = ?, matiere_IdProfesseur = ? WHERE matiere_Id = ?"
+        let requeteSQL = "UPDATE matieres SET mt_nom = ?, mt_IdProfesseur = ? WHERE mt_id = ?"
 
         return new Promise((resolve, reject) => {
 

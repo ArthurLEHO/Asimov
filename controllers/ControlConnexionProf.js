@@ -1,4 +1,5 @@
 const modelConnexionProf = require('../models/modelConnexionProf');
+const cookieParser = require('cookie-parser');
 
 const controllerConnexionProf = {
 

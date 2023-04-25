@@ -23,7 +23,7 @@ const Notes = {
     async afficherNotesEleve(req, res){
 
         let id = req.params.id
-        let requeteSQL = "SELECT mt_nom, nt_id, nt_resultat FROM Eleves INNER JOIN Notes ON el_id = nt_idEleve INNER JOIN Matieres ON nt_matiere = mt_id WHERE el_id = ? "
+        let requeteSQL = "SELECT mt_nom, nt_id, nt_resultat FROM eleves INNER JOIN notes ON el_id = nt_idEleve INNER JOIN matieres ON nt_matiere = mt_id WHERE el_id = ? "
         
         //On initialise un cookie pour pouvoir savoir vers quel élève rediriger dans le controller
         res.cookie('idEleve', id)
