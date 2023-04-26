@@ -101,7 +101,7 @@ const controllerClasse = {
 
 				if (data) {
 
-					res.redirect("/matieres");
+					res.render("matieres");
 
 				} else {
 

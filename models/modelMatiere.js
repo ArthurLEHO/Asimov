@@ -80,41 +80,21 @@ const Matieres = {
     async ajouterMatiere(req) {
 
         let nom = req.body.nom
-        let professeur = req.body.professeur
-        let requeteSQL = "INSERT INTO matieres (mt_nom, mt_IdProfesseur) VALUES(?,?)"
+        let requeteSQL = "INSERT INTO matieres (mt_nom) VALUES(?)"
 
         return new Promise((resolve, reject) => {
+            
+            mysqlconnexion.query(requeteSQL, [nom], (err, lignes, champs) => {
 
-            //Si le professeur est renseigné dans le body alors la matière lui est attribuée
-            if (professeur) {
+                if (err) {
 
-                mysqlconnexion.query(requeteSQL, [nom, professeur], (err, lignes, champs) => {
+                    return reject(err)
 
-                    if (err) {
+                }
 
-                        return reject(err)
+                return resolve(lignes)
 
-                    }
-
-                    return resolve(lignes)
-
-                })
-
-                //Sinon dans la table matiere, la colonne matiere_IdProfesseur est créée à NULL
-            } else {
-
-                mysqlconnexion.query(requeteSQL, [nom, null], (err, lignes, champs) => {
-
-                    if (err) {
-
-                        return reject(err)
-
-                    }
-
-                    return resolve(lignes)
-
-                })
-            }
+            })
         })
     },
 

@@ -25,6 +25,7 @@ router.get('/addNotes', noteCtrl.afficherAjouterNotes);
 router.get('/modifierNotes', noteCtrl.afficherModifierNote);
 
 router.get('/addMatiere', matiereCtrl.afficherAjouterMatiere);
+router.post('/addMatiere', matiereCtrl.ajouterMatiere);
 
 router.get('/addProfesseur', profCtrl.afficherAjouterProfesseur);
 router.post('/addProfesseur', profCtrl.ajouterProfesseur);
