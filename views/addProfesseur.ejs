@@ -42,8 +42,8 @@
 
                         <div>
                             <label for="listematieres">Sélectionnez une matière:</label>
-                            <select id="listematieres" name="listematieres">
-                                <% dataListeMatieres.forEach(function(matiere) { %>
+                            <select id="listematieres" name="listematieres" required>
+                                <% dataListeMatieres2.forEach(function(matiere) { %>
                                     <option value="<%= matiere.mt_id %>">
                                         <%= matiere.mt_nom %>
                                     </option>

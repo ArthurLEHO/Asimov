@@ -1,5 +1,6 @@
 const modelNote = require('../models/modelNote');
 const modelMatiere = require('../models/modelMatiere');
+const modelEleve = require('../models/modelConnexionEleve');
 const cookieParser = require('cookie-parser');
 
 const controllerClasse = {
@@ -94,8 +95,12 @@ const controllerClasse = {
     },
 
     async afficherAjouterNotes(req, res) {
+        
+        const dataListeEleves = await modelEleve.ConnexionEleve.afficherLesEleves(req)
+        const dataListeMatieres = await modelMatiere.Matieres.listeMatieres(req)
+
         if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
-            res.render('addNotes');
+            res.render('addNotes', { dataListeEleves: dataListeEleves, dataListeMatieres: dataListeMatieres });
         } else {
             res.render("refus")
         }
@@ -115,7 +120,7 @@ const controllerClasse = {
 
                 if (data) {
 
-                    res.redirect("/notes/notesEleve/" + req.cookies.idEleve);
+                    res.render("suiviNotes");
 
                 } else {
 

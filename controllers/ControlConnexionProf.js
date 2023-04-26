@@ -112,10 +112,9 @@ const controllerConnexionProf = {
 	},
 
 	async afficherAjouterProfesseur(req, res) {
-		const data = await modelMatiere.Matieres.listeMatieres(req)
-		console.log(data)
+		const dataListeMatieres = await modelMatiere.Matieres.listeMatieres(req)
 		if (req.cookies.role == "Principal") {
-			res.render('addProfesseur', {dataListeMatieres: data})
+			res.render('addProfesseur', {dataListeMatieres: dataListeMatieres})
 		} else {
 			res.render('refus')
 		}

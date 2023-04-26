@@ -19,65 +19,53 @@
         <div class="d-flex justify-content-space-evenly">
 
             <div class="container d-flex flex-column text-center w-75 h-25 p-5 fondBoutons menuMENU">
-                <div class="input-group d-flex w-50 mx-auto">
-
-                    <div class="input-group">
-                        <label for=""></label>
+                <form action="/addNotes" method="post">
+                    <div class="input-group d-flex p-3 w-50 mx-auto">
+                        <label for="listeEleves"></label>
                         <span class="input-group-text" id="">Élève : </span>
-                        <input type="text" class="form-control" id="el_nom" placeholder="">
-                        
+                        <select id="listeEleves" name="idEleve" required>
+                            <% dataListeEleves.forEach(function(eleve) { %>
+                                <option value="<%= eleve.el_id %>">
+                                    <%= eleve.el_nom%> <%= eleve.el_prenom %>
+                                </option>
+                                <% }); %>
+                        </select>
 
-                        <!-- tests à l'aveugle -->
-                        <form method="get" action="/supprJoueur1">
-                            <div>
-                                <label for=""> Élève : </label>
-                                <input required list="eleve" id="eleve" name="eleve" placeholder="Élève*">
-                                <button type="submit"> Confirmer </button>
-                            </div>
-                        </form>
+                        <!-- Ajout de l'espace -->
+                        <div class="m-2"></div>
 
-                            
+                        <label for="listematieres"></label>
+                        <span class="input-group-text" id="">Matière : </span>
+                        <select id="listematieres" name="idMatiere" required>
+                            <% dataListeMatieres.forEach(function(matiere) { %>
+                                <option value="<%= matiere.mt_id %>">
+                                    <%= matiere.mt_nom %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <hr>
+
+                    <div class="input-group d-flex p-3 w-50 mx-auto">
+                        <label for=""></label>
+                        <span class="input-group-text" id="">Date : </span>
+                        <input type="date" class="form-control" name="nt_date" id="nt_date" required>
 
                         <!-- Ajout de l'espace -->
                         <div class="m-2"></div>
 
                         <label for=""></label>
-                        <span class="input-group-text" id="">Matière : </span>
-                        <input type="text" class="form-control" id="modif_matiere" placeholder="">
+                        <span class="input-group-text" id="">Note élève : </span>
+                        <input type="text" class="form-control" name="nt_resultat" id="nt_resultat" required>
                     </div>
 
-                </div>
-                <hr>
+                    <div class="m-3"></div>
 
-                <div class="input-group d-flex p-3 w-50 mx-auto">
-                    <label for=""></label>
-                    <span class="input-group-text" id="">Titre : </span>
-                    <input type="text" class="form-control" id="modif_titre" placeholder="">
-
-                    <!-- Ajout de l'espace -->
-                    <div class="m-2"></div>
-
-                    <label for=""></label>
-                    <span class="input-group-text" id="">Date : </span>
-                    <input type="text" class="form-control" id="modif_date" placeholder="">
-
-                    <div class="m-2"></div>
-
-                </div>
-
-                <div class="input-group d-flex p-3 w-25 mx-auto">
-                    <label for=""></label>
-                    <span class="input-group-text" id="">Note élève : </span>
-                    <input type="text" class="form-control" id="modif_noteEl" placeholder="">
-                </div>
-
-                <div class="m-3"></div>
-
-                <div class="text-center">
-                    <button type="submit"
-                        class="btn w-25 btn-square-xl button1 btn btn-light btn-lg btn-block">Confirmer</button>
-                </div>
-
+                    <div class="text-center">
+                        <button type="submit"
+                            class="btn w-25 btn-square-xl button1 btn btn-light btn-lg btn-block">Confirmer</button>
+                    </div>
+                </form>
             </div>
         </div>
 

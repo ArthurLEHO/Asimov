@@ -68,15 +68,19 @@ const Notes = {
 
     //Fonction pour le principal ou les professeurs : permet d'ajouter une note à un élève
     async ajouterNotes(req){
+        const dateInput = req.body.nt_date;
+        const date = new Date(dateInput);
+        const dateBonFormat = date.toISOString().slice(0, 10);
 
         let eleve = req.body.idEleve
-        let matiere = req.body.matiere
-        let valeur = req.body.valeur
-        let requeteSQL = "INSERT INTO notes (nt_idEleve, nt_matiere, nt_resultat) VALUES(?,?,?)"
+        let matiere = req.body.idMatiere
+        let resultat = req.body.nt_resultat
+
+        let requeteSQL = "INSERT INTO notes (nt_idEleve, nt_matiere, nt_resultat, nt_date) VALUES(?,?,?,?)"
 
         return new Promise((resolve, reject)=>{
 
-            mysqlconnexion.query(requeteSQL, [eleve, matiere, valeur], (err, lignes, champs) => {
+            mysqlconnexion.query(requeteSQL, [eleve, matiere, resultat, dateBonFormat], (err, lignes, champs) => {
 
                 if(err){
 

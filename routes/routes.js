@@ -1,11 +1,11 @@
-const express =  require('express');
+const express = require('express');
 const mainCtrl = require('../controllers/ControlAccueil.js');
 const directeurCtrl = require('../controllers/ControlConnexionDirecteur.js');
 const profCtrl = require('../controllers/ControlConnexionProf.js');
 const eleveCtrl = require('../controllers/ControlConnexionEleve.js');
 const noteCtrl = require('../controllers/ControlNote.js');
 const matiereCtrl = require('../controllers/ControlMatiere.js');
-const router = express.Router() ;
+const router = express.Router();
 
 router.get('/', mainCtrl.affichageAccueil);
 
@@ -22,7 +22,7 @@ router.get('/deconnexion', mainCtrl.deconnexion);
 
 router.get('/suiviNotes', eleveCtrl.affichageSuiviNotes);
 router.get('/addNotes', noteCtrl.afficherAjouterNotes);
-router.get('/modifierNotes', noteCtrl.afficherModifierNote);
+router.post('/addNotes', noteCtrl.ajouterNote);
 
 router.get('/addMatiere', matiereCtrl.afficherAjouterMatiere);
 router.post('/addMatiere', matiereCtrl.ajouterMatiere);
