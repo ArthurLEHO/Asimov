@@ -126,7 +126,7 @@ const controllerConnexionProf = {
 
 			try {
 
-				const data = await modelProfesseur.Professeurs.ajouterProfesseur(req)
+				const data = await modelConnexionProf.ConnexionProf.ajouterProfesseur(req)
 
 				if (data) {
 

@@ -106,9 +106,9 @@ const ConnexionProf = {
     //Fonction pour le principal : permet d'ajouter un professeur à l'établissement
     async ajouterProfesseur(req) {
 
-        let nom = req.body.nom
-        let prenom = req.body.prenom
-        let mdp = req.body.mdp
+        let nom = req.body.prof_nom
+        let prenom = req.body.prof_prenom
+        let mdp = req.body.prof_mdp
         let requeteSQL = "INSERT INTO personnelscolaires (ps_nom, ps_prenom, ps_motdepasse, ps_statut) VALUES(?,?, ?, 'Professeur')"
 
         return new Promise((resolve, reject) => {

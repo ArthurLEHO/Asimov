@@ -19,35 +19,35 @@
         <div class="d-flex justify-content-space-evenly">
 
             <div class="container d-flex flex-column text-center w-75 h-25 p-5 fondBoutons menuMENU">
-                <div class="input-group d-flex w-50 mx-auto">
+                <form action="/addProfesseur" method="post" >
+                    <div class="input-group d-flex w-50 mx-auto">
+                        <div class="input-group">
+                            <label for="prof_nom"></label>
+                            <span class="input-group-text" id="">Nom : </span>
+                            <input type="text" class="form-control" name="prof_nom" id="prof_nom" required>
 
-                    <div class="input-group">
-                        <label for="prof_nom"></label>
-                        <span class="input-group-text" id="">Nom : </span>
-                        <input type="text" class="form-control" id="prof_nom" placeholder="" required>
+                            <!-- Ajout de l'espace -->
+                            <div class="m-2"></div>
 
-                        <!-- Ajout de l'espace -->
-                        <div class="m-2"></div>
+                            <label for="prof_prenom"></label>
+                            <span class="input-group-text" id="">Prénom : </span>
+                            <input type="text" class="form-control" name="prof_prenom" id="prof_prenom" required>
+                        </div>
 
-                        <label for="prof_prenom"></label>
-                        <span class="input-group-text" id="">Prénom : </span>
-                        <input type="text" class="form-control" id="prof_prenom" placeholder="" required>
+                        <div class="input-group w-50 p-3 mx-auto">
+                            <label for="prof_mdp"></label>
+                            <span class="input-group-text" id="">Mot de passe : </span>
+                            <input type="password" class="form-control" name="prof_mdp" id="prof_mdp" required>
+                        </div>
+
                     </div>
+                    <hr>
 
-                    <div class="input-group w-50 p-3 mx-auto">
-                        <label for="prof_mdp"></label>
-                        <span class="input-group-text" id="">Mot de passe : </span>
-                        <input type="password" class="form-control" id="prof_mdp" placeholder="" required>
+                    <div class="text-center">
+                        <button type="submit"
+                            class="btn w-25 btn-square-xl button1 btn btn-light btn-lg btn-block">Confirmer</button>
                     </div>
-
-                </div>
-                <hr>
-
-                <div class="text-center">
-                    <button type="submit"
-                        class="btn w-25 btn-square-xl button1 btn btn-light btn-lg btn-block">Confirmer</button>
-                </div>
-                
+                </form>
             </div>
         </div>
 
