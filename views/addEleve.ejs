@@ -34,13 +34,13 @@
                             <input type="text" class="form-control" name="el_prenom" id="el_prenom" required>
                         </div>
 
-                        <div class="input-group w-50 p-3 mx-auto">
+                        <div class="input-group w-75 p-3 mx-auto">
                             <label for="listeclasses"></label>
                             <span class="input-group-text" id="">Sélectionnez une classe : </span>
-                            <select id="listeclasses" name="listeclasses">
-                                <% dataListeClasses.forEach(function(classe) { %>
-                                    <option value="<%= classe.cl_id %>">
-                                        <%= matiere.cl_nom %>
+                            <select id="listeclasses" name="el_idClasse">
+                                <% dataListeClasses.forEach(function(classes) { %>
+                                    <option value="<%= classes.cl_id %>">
+                                        <%= classes.cl_nom %>
                                     </option>
                                     <% }); %>
                             </select>

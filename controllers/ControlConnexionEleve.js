@@ -155,10 +155,9 @@ const controllerConnexionEleve = {
 	},
 
 	async afficherAjouterEleve(req, res) {
-		const data = await modelClasse.Classes.afficherToutesClasses(req)
-		console.log(data)
+		const dataListeClasses = await modelClasse.Classes.afficherToutesClasses(req)
 		if (req.cookies.role == "Principal") {
-			res.render("addEleve", {dataListeClasses: data})
+			res.render("addEleve", {dataListeClasses: dataListeClasses})
 		} else {
 			res.render("refus")
 		}
@@ -172,11 +171,11 @@ const controllerConnexionEleve = {
 
 			try {
 
-				const data = await modelEleves.Eleves.ajouterEleve(req)
+				const data = await modelConnexionEleve.ConnexionEleve.ajouterEleve(req)
 
 				if (data) {
 
-					res.redirect("/eleves/afficherUneClasse/" + req.cookies.idClasse)
+					res.render("eleves")
 
 				} else {
 
