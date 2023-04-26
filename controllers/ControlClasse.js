@@ -119,6 +119,16 @@ const controllerClasse = {
         }
     },
 
+    async afficherAjouterClasse(req, res) {
+        const dataListeProfs = await modelProfesseurs.ConnexionProf.afficherProfesseurs(req)
+
+        if (req.cookies.role == "Principal") {
+            res.render('addClasse', {dataListeProfs: dataListeProfs})
+        } else {
+            res.render('refus')
+        }
+    },
+
     //Fonction pour le principal : permet d'ajouter une classe à l'établissement
     async ajouterClasse(req, res) {
 
@@ -131,7 +141,7 @@ const controllerClasse = {
 
                 if (data) {
 
-                    res.redirect("/classes/principal");
+                    res.render("menuDirection");
 
                 } else {
 

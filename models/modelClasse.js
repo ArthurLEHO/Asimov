@@ -88,13 +88,13 @@ const Classes = {
     //Fonction pour le proviseur : permet d'ajouter une classe
     async ajouterClasse(req) {
 
-        let nom = req.body.nom
-        let professeur = req.body.professeur
+        let nom = req.body.cl_nom
+        let prof = req.body.idProf
         let requeteSQL = "INSERT INTO classes (cl_nom, cl_IdProf) VALUES(?,?)"
 
         return new Promise((resolve, reject) => {
 
-            mysqlconnexion.query(requeteSQL, [nom, professeur], (err, lignes, champs) => {
+            mysqlconnexion.query(requeteSQL, [nom, prof], (err, lignes, champs) => {
 
                 if (err) {
 

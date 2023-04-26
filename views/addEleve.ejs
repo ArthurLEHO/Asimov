@@ -36,7 +36,7 @@
                         <div class="input-group w-75 p-3 mx-auto">
                             <label for="listeclasses"></label>
                             <span class="input-group-text" id="">Sélectionnez une classe : </span>
-                            <select id="listeclasses" name="el_idClasse">
+                            <select id="listeclasses" name="el_idClasse" required>
                                 <% dataListeClasses.forEach(function(classes) { %>
                                     <option value="<%= classes.cl_id %>">
                                         <%= classes.cl_nom %>
