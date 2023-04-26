@@ -81,6 +81,14 @@ const controllerClasse = {
 		}
 	},
 
+	async afficherAjouterMatiere(req, res) {
+		if (req.cookies.role == "Principal") {
+			res.render("addMatiere")
+		} else {
+			res.render('refus')
+		}
+	},
+
 	//Fonction pour le principal : permet d'ajouter une matière
 	async ajouterMatiere(req, res) {
 

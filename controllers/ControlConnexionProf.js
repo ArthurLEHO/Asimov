@@ -110,6 +110,14 @@ const controllerConnexionProf = {
 		}
 	},
 
+	async afficherAjouterProfesseur(req, res) {
+		if (req.cookies.role == "Principal") {
+			res.render('addProfesseur')
+		} else {
+			res.render('refus')
+		}
+	},
+
 	//Fonction pour le principal : permet d'ajouter un professeur à l'établissement
 	async ajouterProfesseur(req, res) {
 
@@ -122,7 +130,7 @@ const controllerConnexionProf = {
 
 				if (data) {
 
-					res.redirect("/professeurs");
+					res.render("professeurs");
 
 				} else {
 

@@ -41,7 +41,7 @@ const Classes = {
 
     },
 
-    //Fonction pour les professeurs : permet d'afficher les classes du professeur connecté
+    //Fonction pour les profs : permet d'afficher les classes du prof connecté
     async afficherMesClasses(req) {
 
         let id = req.cookies.id

@@ -8,17 +8,26 @@ const matiereCtrl = require('../controllers/ControlMatiere.js');
 const router = express.Router() ;
 
 router.get('/', mainCtrl.affichageAccueil);
+
 router.get('/connexionDirecteur', directeurCtrl.affichageConnexionDirecteur);
 router.post('/connexionDirecteur', directeurCtrl.controleConnexion);
+
 router.get('/connexionProf', profCtrl.affichageConnexionProf);
 router.post('/connexionProf', profCtrl.controleConnexion);
+
 router.get('/connexionEleve', eleveCtrl.affichageConnexionEleve);
 router.post('/connexionEleve', eleveCtrl.controleConnexion);
-router.get('/suiviNotes', eleveCtrl.affichageSuiviNotes);
+
 router.get('/deconnexion', mainCtrl.deconnexion);
+
+router.get('/suiviNotes', eleveCtrl.affichageSuiviNotes);
 router.get('/addNotes', noteCtrl.afficherAjouterNotes);
-router.get('/addMatiere', matiereCtrl.ajouterMatiere);
-router.get('/addProfesseur', profCtrl.ajouterProfesseur);
 router.get('/modifierNotes', noteCtrl.afficherModifierNote);
+
+router.get('/addMatiere', matiereCtrl.afficherAjouterMatiere);
+
+router.get('/addProfesseur', profCtrl.afficherAjouterProfesseur);
+
+
 
 module.exports = router 
