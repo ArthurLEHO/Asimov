@@ -153,6 +153,14 @@ const controllerConnexionEleve= {
 		}
 	},
 
+	async afficherAjouterEleve(req, res) {
+		if (req.cookies.role == "Principal") {
+			res.render("addEleve")
+		} else {
+			res.render("refus")
+		}
+	},
+
 	//Fonction pour le principal : permet d'ajouter un élève
 	async ajouterEleve(req, res){
 

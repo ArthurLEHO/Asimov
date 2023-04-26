@@ -28,6 +28,7 @@ router.get('/addMatiere', matiereCtrl.afficherAjouterMatiere);
 
 router.get('/addProfesseur', profCtrl.afficherAjouterProfesseur);
 
+router.get('/addEleve', eleveCtrl.afficherAjouterEleve);
 
 
 module.exports = router 
