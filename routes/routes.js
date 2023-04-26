@@ -31,6 +31,7 @@ router.get('/addProfesseur', profCtrl.afficherAjouterProfesseur);
 router.post('/addProfesseur', profCtrl.ajouterProfesseur);
 
 router.get('/addEleve', eleveCtrl.afficherAjouterEleve);
+router.post('/addEleve', eleveCtrl.ajouterEleve);
 
 
 module.exports = router 

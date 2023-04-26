@@ -111,14 +111,15 @@ const ConnexionEleve = {
     //Fonction pour le proviseur : permet d'afficher un élève dans une classe de l'établissement
     async ajouterEleve(req) {
 
-        let nom = req.body.nom
-        let prenom = req.body.prenom
-        let classe = req.body.classe
-        let requeteSQL = "INSERT INTO eleves (el_nom, el_prenom, el_idClasse) VALUES(?,?,?,?)"
+        let nom = req.body.el_nom
+        let prenom = req.body.el_prenom
+        let classe = req.body.el_idClasse
+        let mdp = req.body.el_mdp
+        let requeteSQL = "INSERT INTO eleves (el_nom, el_prenom, el_idClasse, el_motdepasse) VALUES(?,?,?,?)"
 
         return new Promise((resolve, reject) => {
 
-            mysqlconnexion.query(requeteSQL, [nom, prenom, classe], (err, lignes, champs) => {
+            mysqlconnexion.query(requeteSQL, [nom, prenom, classe, mdp], (err, lignes, champs) => {
 
                 if (err) {
 

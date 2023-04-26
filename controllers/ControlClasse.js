@@ -52,7 +52,7 @@ const controllerClasse = {
             try {
 
                 const data1 = await modelClasses.Classes.afficherToutesClasses()
-                const data2 = await modelProfesseurs.Professeurs.afficherProfesseurs()
+                const data2 = await modelDirecteur.Professeurs.afficherProfesseurs()
 
                 if (data1) {
 
@@ -79,7 +79,7 @@ const controllerClasse = {
                 console.log(error)
             }
         }
-    },
+    },      
 
     //Fonction pour le principal : permet d'afficher une classe de l'établissement en particulier
     async affichageUneClasse(req, res) {
