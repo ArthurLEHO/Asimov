@@ -19,7 +19,7 @@
         <div class="d-flex justify-content-space-evenly">
 
             <div class="container d-flex flex-column text-center w-75 h-25 p-5 fondBoutons menuMENU">
-                <form action="/addProfesseur" method="post" >
+                <form action="/addProfesseur" method="post">
                     <div class="input-group d-flex w-50 mx-auto">
                         <div class="input-group">
                             <label for="prof_nom"></label>
@@ -40,6 +40,16 @@
                             <input type="password" class="form-control" name="prof_mdp" id="prof_mdp" required>
                         </div>
 
+                        <div>
+                            <label for="listematieres">Sélectionnez une matière:</label>
+                            <select id="listematieres" name="listematieres">
+                                <% dataListeMatieres.forEach(function(matiere) { %>
+                                    <option value="<%= matiere.mt_id %>">
+                                        <%= matiere.mt_nom %>
+                                    </option>
+                                    <% }); %>
+                            </select>
+                        </div>
                     </div>
                     <hr>
 

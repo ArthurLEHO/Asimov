@@ -109,11 +109,12 @@ const ConnexionProf = {
         let nom = req.body.prof_nom
         let prenom = req.body.prof_prenom
         let mdp = req.body.prof_mdp
-        let requeteSQL = "INSERT INTO personnelscolaires (ps_nom, ps_prenom, ps_motdepasse, ps_statut) VALUES(?,?, ?, 'Professeur')"
+        let matiere = req.body.listematieres
+        let requeteSQL = "INSERT INTO personnelscolaires (ps_nom, ps_prenom, ps_motdepasse, ps_statut, ps_idMatiere) VALUES(?,?, ?, 'Professeur', ?)"
 
         return new Promise((resolve, reject) => {
 
-            mysqlconnexion.query(requeteSQL, [nom, prenom, mdp], (err, lignes, champs) => {
+            mysqlconnexion.query(requeteSQL, [nom, prenom, mdp, matiere], (err, lignes, champs) => {
 
                 if (err) {
 

@@ -1,4 +1,5 @@
 const modelConnexionProf = require('../models/modelConnexionProf');
+const modelMatiere = require('../models/modelMatiere');
 const cookieParser = require('cookie-parser');
 
 const controllerConnexionProf = {
@@ -111,8 +112,10 @@ const controllerConnexionProf = {
 	},
 
 	async afficherAjouterProfesseur(req, res) {
+		const data = await modelMatiere.Matieres.listeMatieres(req)
+		console.log(data)
 		if (req.cookies.role == "Principal") {
-			res.render('addProfesseur')
+			res.render('addProfesseur', {dataListeMatieres: data})
 		} else {
 			res.render('refus')
 		}

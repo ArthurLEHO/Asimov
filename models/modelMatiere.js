@@ -41,6 +41,19 @@ const Matieres = {
 
     },
 
+    async listeMatieres() {
+        let requeteSQL = "SELECT mt_id, mt_nom FROM matieres"
+
+        return new Promise((resolve, reject) => {
+            mysqlconnexion.query(requeteSQL, (error, elements) => {
+                if (error) {
+                    return reject(error)
+                }
+                return resolve(elements)
+            })
+        })
+    },
+
     //Fonction pour le proviseur : permet d'afficher une matière en particulier
     async afficherUneMatiere(req) {
 
