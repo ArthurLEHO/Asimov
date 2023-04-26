@@ -5,6 +5,7 @@ const profCtrl = require('../controllers/ControlConnexionProf.js');
 const eleveCtrl = require('../controllers/ControlConnexionEleve.js');
 const noteCtrl = require('../controllers/ControlNote.js');
 const matiereCtrl = require('../controllers/ControlMatiere.js');
+const classeCtrl = require('../controllers/ControlClasse.js');
 const router = express.Router();
 
 router.get('/', mainCtrl.affichageAccueil);
@@ -32,6 +33,9 @@ router.post('/addProfesseur', profCtrl.ajouterProfesseur);
 
 router.get('/addEleve', eleveCtrl.afficherAjouterEleve);
 router.post('/addEleve', eleveCtrl.ajouterEleve);
+
+router.get('/addClasse', classeCtrl.afficherAjouterClasse);
+router.post('/addClasse', classeCtrl.ajouterClasse);
 
 
 module.exports = router 

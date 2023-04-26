@@ -42,7 +42,7 @@ const ConnexionProf = {
     //Fonction pour le principal : permet d'afficher la liste des professeurs
     async afficherProfesseurs() {
 
-        let requeteSQL = "SELECT * FROM personnelscolaires ORDER BY ps_nom"
+        let requeteSQL = "SELECT * FROM personnelscolaires WHERE ps_statut = 'Professeur' ORDER BY ps_nom"
 
         return new Promise((resolve, reject) => {
 
