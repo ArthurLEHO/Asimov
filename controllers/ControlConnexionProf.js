@@ -44,7 +44,7 @@ const controllerConnexionProf = {
 
 			try {
 
-				const data1 = await modelProfesseur.Professeurs.afficherProfesseurs2()
+				const data1 = await modelConnexionProf.ConnexionProf.afficherProfesseurs2()
 
 				if (data1) {
 

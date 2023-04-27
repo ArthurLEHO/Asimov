@@ -63,7 +63,7 @@ const ConnexionProf = {
     //Fonction pour le principal : permet d'afficher chaque professeur avec la matière qu'il enseigne'
     async afficherProfesseurs2() {
 
-        let requeteSQL = "SELECT * FROM personnelscolaires LEFT JOIN matieres ON ps_id = mt_IdProf ORDER BY ps_nom"
+        let requeteSQL = "SELECT ps_nom, ps_prenom, mt_nom FROM personnelscolaires, matieres WHERE ps_statut = 'Professeur' AND ps_idMatiere = mt_id ORDER BY ps_nom"
 
         return new Promise((resolve, reject) => {
 

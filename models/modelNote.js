@@ -70,7 +70,7 @@ const Notes = {
     async ajouterNotes(req){
         const dateInput = req.body.nt_date;
         const date = new Date(dateInput);
-        const dateBonFormat = date.toISOString().slice(0, 10);
+        let dateBonFormat = date.toISOString().slice(0, 10);
 
         let eleve = req.body.idEleve
         let matiere = req.body.idMatiere

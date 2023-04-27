@@ -30,6 +30,7 @@ router.post('/addMatiere', matiereCtrl.ajouterMatiere);
 
 router.get('/addProfesseur', profCtrl.afficherAjouterProfesseur);
 router.post('/addProfesseur', profCtrl.ajouterProfesseur);
+router.get('/professeurs', profCtrl.affichageProfesseurs);
 
 router.get('/addEleve', eleveCtrl.afficherAjouterEleve);
 router.post('/addEleve', eleveCtrl.ajouterEleve);
