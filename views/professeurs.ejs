@@ -14,13 +14,11 @@
             <div>
                 <tb id="bdd" class="tb">
                     <h5>
-                    <% lignes.forEach((ligne, index)=>{%> <!--Utilisation du framework Express.JS synchro à la bdd -->
-                        <tr id=<%=ligne.id%>>
-                            <%= "Id:" + ligne.ID + " |"%>
-                            <%= "Nom:" + ligne.nom + " |"%>
-                            <%= "Prénom:" + ligne.prenom + " |"%>
-                            <%= "Numéro:" + ligne.num + " |"%>
-                            <%= "Club:" + ligne.nomClub%>
+                    <% dataTotale.forEach((data, index)=>{%> <!--Utilisation du framework Express.JS synchro à la bdd -->
+                        <tr id=<%=data.ps_id%>>
+                            <%= "Nom:" + data.ps_nom + " |"%>
+                            <%= "Prénom:" + data.ps_prenom + " |"%>
+                            <%= "Matière:" + data.mt_nom + " |"%>
                         </tr><p></p>
                     <%})%>
                     </h5>
