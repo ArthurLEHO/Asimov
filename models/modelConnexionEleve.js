@@ -42,7 +42,7 @@ const ConnexionEleve = {
     //Fonction pour le proviseur : permet d'afficher tous les élèves de l'établissement dans l'ordre alphabétique
     async afficherLesEleves() {
 
-        let requeteSQL = "SELECT * FROM eleves ORDER BY el_Nom"
+        let requeteSQL = "SELECT el_nom, el_prenom, cl_nom FROM eleves, classes ORDER BY cl_nom"
 
         return new Promise((resolve, reject) => {
 

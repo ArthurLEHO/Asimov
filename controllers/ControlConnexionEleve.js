@@ -50,11 +50,10 @@ const controllerConnexionEleve = {
 			try {
 
 				const data1 = await modelEleves.Eleves.afficherEleves()
-				const data2 = await modelClasses.Classes.afficherToutesClasses()
 
 				if (data1) {
 
-					res.render("eleves", { cookie: req.cookies.role, dataEleve: data1, dataClasse: data2 })
+					res.render("eleves", { cookie: req.cookies.role, dataEleves: data1 })
 
 				} else {
 
@@ -87,7 +86,7 @@ const controllerConnexionEleve = {
 
 			try {
 
-				const data1 = await modelEleves.Eleves.afficherElevesClasse(req, res)
+				const data1 = await modelConnexionEleve.ConnexionEleve.afficherElevesClasse(req, res)
 
 				if (data1) {
 
