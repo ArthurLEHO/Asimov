@@ -19,22 +19,22 @@
                 </tr>
             </thead>
             <tbody>
-                <% dataTotale.forEach((data, index)=>{%>
-                    <tr id=<%=data.el_id%>>
+                <% dataEleves.forEach((eleve, index)=>{%>
+                    <tr id=<%=eleve.el_id%>>
                         <td>
-                            <%=data.el_nom%>
+                            <%=eleve.el_nom%>
                         </td>
                         <td>
-                            <%=data.el_prenom%>
+                            <%=eleve.el_prenom%>
                         </td>
                         <td>
-                            <%=data.el_idClasse%>
+                            <%=eleve.cl_nom%>
                         </td>
                     </tr>
                     <%})%>
             </tbody>
         </table>
     </body>
-    
+
     </html>
     <%- include('footer') %>

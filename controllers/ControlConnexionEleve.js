@@ -49,7 +49,7 @@ const controllerConnexionEleve = {
 
 			try {
 
-				const data1 = await modelEleves.Eleves.afficherEleves()
+				const data1 = await modelConnexionEleve.ConnexionEleve.afficherLesEleves(req)
 
 				if (data1) {
 
