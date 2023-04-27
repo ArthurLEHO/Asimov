@@ -10,7 +10,23 @@
     </head>
 
     <body>
-
+        <form method="get" action="">
+            <div>
+                <tb id="bdd" class="tb">
+                    <h5>
+                    <% lignes.forEach((ligne, index)=>{%> <!--Utilisation du framework Express.JS synchro à la bdd -->
+                        <tr id=<%=ligne.id%>>
+                            <%= "Id:" + ligne.ID + " |"%>
+                            <%= "Nom:" + ligne.nom + " |"%>
+                            <%= "Prénom:" + ligne.prenom + " |"%>
+                            <%= "Numéro:" + ligne.num + " |"%>
+                            <%= "Club:" + ligne.nomClub%>
+                        </tr><p></p>
+                    <%})%>
+                    </h5>
+                </tb>
+            </div>
+        </form>
     </body>
 
     </html>
