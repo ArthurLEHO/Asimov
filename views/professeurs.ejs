@@ -16,27 +16,31 @@
                     <th class="bg-dark text-white" scope="col">Nom</th>
                     <th class="bg-dark text-white" scope="col">Prénom</th>
                     <th class="bg-dark text-white" scope="col">Matière</th>
+                    <th class="bg-dark text-white" scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <% dataTotale.forEach((data, index)=>{%>
-                    <tr id=<%=data.ps_id%>>
-                        <td>
-                            <%=data.ps_nom%>
-                        </td>
-                        <td>
-                            <%=data.ps_prenom%>
-                        </td>
-                        <td>
-                            <%=data.mt_nom%>
-                        </td>
-                    </tr>
-                    <%})%>
+                <tr id=<%=data.ps_id%>>
+                    <td>
+                        <%=data.ps_nom%>
+                    </td>
+                    <td>
+                        <%=data.ps_prenom%>
+                    </td>
+                    <td>
+                        <%=data.mt_nom%>
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-secondary">Modifier</button>
+                            <button type="button" class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </td>                    
+                </tr>
+                <%})%>
             </tbody>
         </table>
-
-
-
     </body>
 
     </html>
