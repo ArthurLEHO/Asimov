@@ -70,7 +70,7 @@ INSERT INTO Eleves (el_nom, el_prenom, el_idClasse, el_motdepasse) VALUES ('Cova
 INSERT INTO Eleves (el_nom, el_prenom, el_idClasse, el_motdepasse) VALUES ('Gondre', 'Macéo', '1', 'testMaceo');
 INSERT INTO Eleves (el_nom, el_prenom, el_idClasse, el_motdepasse) VALUES ('Zidi', 'Kamil', '2', 'testKamil');
 INSERT INTO PersonnelScolaires (ps_nom, ps_prenom, ps_motdepasse, ps_statut, ps_idMatiere) VALUES ('Cardona', 'Laurent', 'testLaurent', 'Professeur', 2);
-INSERT INTO PersonnelScolaires (ps_nom, ps_prenom, ps_motdepasse, ps_statut, ps_idMatiere) VALUES ('Braka', 'Raphael', 'testRaphael', 'Professeur', 1);
+INSERT INTO PersonnelScolaires (ps_nom, ps_prenom, ps_motdepasse, ps_statut, ps_idMatiere) VALUES ('Brakha', 'Raphael', 'testRaphael', 'Professeur', 1);
 INSERT INTO PersonnelScolaires (ps_nom, ps_prenom, ps_motdepasse, ps_statut, ps_idMatiere) VALUES ('Buer', 'Micheline', 'testMicheline', 'Principal', NULL);
 INSERT INTO Matieres (mt_nom) VALUES ('Mathématiques');
 INSERT INTO Matieres (mt_nom) VALUES ('Informatique');
