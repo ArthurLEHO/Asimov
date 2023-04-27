@@ -30,6 +30,7 @@ create table Notes (
     nt_matiere INTEGER NOT NULL,
     nt_idEleve INTEGER NOT NULL,
     nt_resultat int(4) NOT NULL,
+    nt_date date NOT NULL,
     PRIMARY KEY (nt_id)
 );
 
@@ -75,9 +76,9 @@ INSERT INTO Matieres (mt_nom) VALUES ('Mathématiques');
 INSERT INTO Matieres (mt_nom) VALUES ('Informatique');
 INSERT INTO Classes (cl_nom, cl_IdProf) VALUES ('Terminale', 1);
 INSERT INTO Classes (cl_nom, cl_IdProf) VALUES ('1ère', 2);
-INSERT INTO Notes (nt_matiere, nt_idEleve, nt_resultat) VALUES (1, 1, 11);
-INSERT INTO Notes (nt_matiere, nt_idEleve, nt_resultat) VALUES (1, 2, 15);
-INSERT INTO Notes (nt_matiere, nt_idEleve, nt_resultat) VALUES (2, 3, 5);
+INSERT INTO Notes (nt_matiere, nt_idEleve, nt_resultat) VALUES (1, 1, 11, '2023-04-20');
+INSERT INTO Notes (nt_matiere, nt_idEleve, nt_resultat) VALUES (1, 2, 15, '2023-04-21');
+INSERT INTO Notes (nt_matiere, nt_idEleve, nt_resultat) VALUES (2, 3, 5, '2023-04-24');
 
 
 
