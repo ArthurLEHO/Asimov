@@ -21,12 +21,13 @@ router.post('/connexionEleve', eleveCtrl.controleConnexion);
 
 router.get('/deconnexion', mainCtrl.deconnexion);
 
-router.get('/suiviNotes', eleveCtrl.affichageSuiviNotes);
+router.get('/suiviNotes', noteCtrl.afficherToutesLesNotes);
 router.get('/addNotes', noteCtrl.afficherAjouterNotes);
 router.post('/addNotes', noteCtrl.ajouterNote);
 
 router.get('/addMatiere', matiereCtrl.afficherAjouterMatiere);
 router.post('/addMatiere', matiereCtrl.ajouterMatiere);
+router.get('/matieres', matiereCtrl.affichageMatiere);
 
 router.get('/addProfesseur', profCtrl.afficherAjouterProfesseur);
 router.post('/addProfesseur', profCtrl.ajouterProfesseur);
@@ -38,6 +39,7 @@ router.get('/eleves', eleveCtrl.affichageEleves);
 
 router.get('/addClasse', classeCtrl.afficherAjouterClasse);
 router.post('/addClasse', classeCtrl.ajouterClasse);
+router.get('/classes', classeCtrl.affichageToutesClasses)
 
 
 module.exports = router 

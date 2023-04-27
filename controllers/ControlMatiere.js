@@ -13,12 +13,11 @@ const controllerClasse = {
 
 			try {
 
-				const data1 = await modelMatiere.Matieres.afficherMatieres()
-				const data2 = await modelProfesseurs.Professeurs.afficherProfesseurs()
+				const dataListeMatieres = await modelMatiere.Matieres.listeMatieres(req)
 
-				if (data1) {
+				if (dataListeMatieres) {
 
-					res.render("matieres", { dataMatiere: data1, cookie: req.cookies.role, dataProfesseur: data2 })
+					res.render("matieres", { dataListeMatieres: dataListeMatieres, cookie: req.cookies.role })
 
 				} else {
 

@@ -66,6 +66,26 @@ const Notes = {
         })
     },
 
+    async afficherToutesNotes(req) {
+
+        let requeteSQL = "SELECT nt_resultat, DATE_FORMAT(nt_date, '%d/%m/%Y') as nt_date, mt_nom, el_nom, el_prenom FROM notes, eleves, matieres WHERE nt_idEleve = el_id AND nt_matiere = mt_id"
+
+        return new Promise((resolve, reject) => {
+
+            mysqlconnexion.query(requeteSQL, (error, elements) => {
+
+                if (error) {
+
+                    return reject(error)
+
+                }
+
+                return resolve(elements)
+
+            })
+        })
+    },
+
     //Fonction pour le principal ou les professeurs : permet d'ajouter une note à un élève
     async ajouterNotes(req){
         const dateInput = req.body.nt_date;

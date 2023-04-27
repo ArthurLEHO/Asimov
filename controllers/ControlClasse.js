@@ -51,16 +51,15 @@ const controllerClasse = {
 
             try {
 
-                const data1 = await modelClasses.Classes.afficherToutesClasses()
-                const data2 = await modelDirecteur.Professeurs.afficherProfesseurs()
+                const dataListeClasses = await modelClasses.Classes.afficherToutesClasses()
 
-                if (data1) {
+                if (dataListeClasses) {
 
-                    res.render("classes", { dataClasse: data1, cookie: req.cookies.role, dataProfesseur: data2 })
+                    res.render("classes", { dataListeClasses: dataListeClasses, cookie: req.cookies.role })
 
                 } else {
 
-                    res.render("accueil")
+                    res.render("menuDirection")
                 }
 
             } catch (error) {

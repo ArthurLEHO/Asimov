@@ -20,26 +20,6 @@ mysqlconnexion.connect((err) => {
 const Matieres = {
 
     //Fonction pour le proviseur : permet d'afficher chaque matière avec le professeur qui l'enseigne
-    async afficherMatieres() {
-
-        let requeteSQL = "SELECT * FROM matieres LEFT JOIN professeur ON mt_IdProfesseur = ps_id ORDER BY mt_nom"
-
-        return new Promise((resolve, reject) => {
-
-            mysqlconnexion.query(requeteSQL, (error, elements) => {
-
-                if (error) {
-
-                    return reject(error)
-
-                }
-
-                return resolve(elements)
-
-            })
-        })
-
-    },
 
     async listeMatieres() {
         let requeteSQL = "SELECT mt_id, mt_nom FROM matieres"

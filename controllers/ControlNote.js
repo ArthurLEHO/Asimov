@@ -42,6 +42,20 @@ const controllerClasse = {
         }
     },
 
+    async afficherToutesLesNotes(req, res) {
+        try {
+            const dataListeNotes = await modelNote.Notes.afficherToutesNotes(req)
+            if (dataListeNotes) {
+                res.render("suiviNotes", { dataListeNotes: dataListeNotes })
+            } else {
+                res.render("probleme")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+    },
+
     // async redirectionNoteEleve(req, res) {
 
     //     if (req.cookies.role == "Eleve") {
@@ -95,12 +109,12 @@ const controllerClasse = {
     },
 
     async afficherAjouterNotes(req, res) {
-        
+
         const dataListeEleves = await modelEleve.ConnexionEleve.afficherLesEleves(req)
         const dataListeMatieres = await modelMatiere.Matieres.listeMatieres(req)
 
         if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
-            res.render('addNotes', { dataListeEleves: dataListeEleves, dataListeMatieres: dataListeMatieres });
+            res.render("addNotes", { dataListeEleves: dataListeEleves, dataListeMatieres: dataListeMatieres });
         } else {
             res.render("refus")
         }
