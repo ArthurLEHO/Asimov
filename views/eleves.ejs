@@ -10,12 +10,13 @@
     </head>
 
     <body>
-        <table class="table text-center">
+        <table class="table text-center w-100">
             <thead class="thead-dark">
                 <tr>
                     <th class="bg-dark text-white" scope="col">Nom</th>
                     <th class="bg-dark text-white" scope="col">Prénom</th>
                     <th class="bg-dark text-white" scope="col">Classe</th>
+                    <th class="bg-dark text-white" scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,12 @@
                         <td>
                             <%=eleve.cl_nom%>
                         </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-secondary">Modifier</button>
+                                <button type="button" class="btn btn-danger">Supprimer</button>
+                            </div>
+                        </td>                    
                     </tr>
                     <%})%>
             </tbody>
