@@ -34,6 +34,7 @@ router.get('/professeurs', profCtrl.affichageProfesseurs);
 
 router.get('/addEleve', eleveCtrl.afficherAjouterEleve);
 router.post('/addEleve', eleveCtrl.ajouterEleve);
+router.get('/eleves', eleveCtrl.affichageEleves);
 
 router.get('/addClasse', classeCtrl.afficherAjouterClasse);
 router.post('/addClasse', classeCtrl.ajouterClasse);
