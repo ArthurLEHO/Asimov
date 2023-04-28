@@ -46,7 +46,7 @@ const controllerClasse = {
         try {
             const dataListeNotes = await modelNote.Notes.afficherToutesNotes(req)
             if (dataListeNotes) {
-                res.render("suiviNotes", { dataListeNotes: dataListeNotes })
+                res.render("suiviNotes", { dataListeNotes: dataListeNotes, cookie: req.cookies.role })
             } else {
                 res.render("probleme")
             }
@@ -131,6 +131,7 @@ const controllerClasse = {
             try {
 
                 const data = await modelNote.Notes.ajouterNotes(req)
+                console.log(req.cookies.role)
 
                 if (data) {
 
