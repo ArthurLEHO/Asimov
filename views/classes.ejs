@@ -15,6 +15,7 @@
                 <tr>
                     <th class="bg-dark text-white" scope="col">Classe</th>
                     <th class="bg-dark text-white" scope="col">Professeur Principal</th>
+                    <th class="bg-dark text-white" scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,12 @@
                         <td>
                             <%=classe.ps_nom%>
                                 <%=classe.ps_prenom%>
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-secondary">Modifier</button>
+                                <button type="button" class="btn btn-danger">Supprimer</button>
+                            </div>
                         </td>
                     </tr>
                     <%})%>

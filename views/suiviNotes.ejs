@@ -17,6 +17,7 @@
                     <th class="bg-dark text-white" scope="col">Résultat</th>
                     <th class="bg-dark text-white" scope="col">Matière</th>
                     <th class="bg-dark text-white" scope="col">Date</th>
+                    <th class="bg-dark text-white" scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,12 @@
                         </td>
                         <td>
                             <%=note.nt_date%>
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-secondary">Modifier</button>
+                                <button type="button" class="btn btn-danger">Supprimer</button>
+                            </div>
                         </td>
                     </tr>
                     <%})%>
