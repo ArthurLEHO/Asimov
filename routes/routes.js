@@ -24,6 +24,8 @@ router.get('/deconnexion', mainCtrl.deconnexion);
 router.get('/suiviNotes', noteCtrl.afficherToutesLesNotes);
 router.get('/addNotes', noteCtrl.afficherAjouterNotes);
 router.post('/addNotes', noteCtrl.ajouterNote);
+router.get('/modifierNotes/:nt_id', noteCtrl.affichageUneNote);
+router.post('/modifierNotes/:nt_id', noteCtrl.modifierNote);
 
 router.get('/addMatiere', matiereCtrl.afficherAjouterMatiere);
 router.post('/addMatiere', matiereCtrl.ajouterMatiere);

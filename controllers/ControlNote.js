@@ -75,15 +75,15 @@ const controllerClasse = {
     async affichageUneNote(req, res) {
 
         //Sécurité au niveau du serveur : si token principal renvoit les données, sinon renvoit sur une page de refus
-        if (req.cookies.role == "Principal") {
+        if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
 
             try {
 
-                const data1 = await modelNote.Notes.afficherUneNote(req)
+                const dataNote = await modelNote.Notes.afficherUneNote(req)
 
-                if (data1) {
+                if (dataNote) {
 
-                    res.render("modifierNotes", { dataNotes: data1, cookie: req.cookies.role })
+                    res.render("modifierNotes", { dataNote: dataNote, cookie: req.cookies.role })
 
                 } else {
 
@@ -221,7 +221,7 @@ const controllerClasse = {
 
                 if (data) {
 
-                    res.redirect("/notes/notesEleve/" + req.cookies.idEleve);
+                    res.render("suiviNotes", { cookie: req.cookies.role });
 
                 } else {
 
