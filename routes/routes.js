@@ -30,6 +30,8 @@ router.post('/modifierNotes/:nt_id', noteCtrl.modifierNote);
 router.get('/addMatiere', matiereCtrl.afficherAjouterMatiere);
 router.post('/addMatiere', matiereCtrl.ajouterMatiere);
 router.get('/matieres', matiereCtrl.affichageMatiere);
+router.get('/modifierMatieres/:mt_id', matiereCtrl.affichageUneMatiere);
+router.post('/modifierMatieres/:mt_id', matiereCtrl.modifierMatiere);
 
 router.get('/addProfesseur', profCtrl.afficherAjouterProfesseur);
 router.post('/addProfesseur', profCtrl.ajouterProfesseur);

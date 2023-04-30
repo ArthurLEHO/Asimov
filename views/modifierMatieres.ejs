@@ -7,24 +7,25 @@
     </head>
 
     <body>
-        <h1 class="d-flex justify-content-left">Ajouter matière</h1>
+        <h1 class="d-flex justify-content-left">Modifier matière</h1>
         <hr>
         <p><br></p>
 
         <div class="d-flex justify-content-space-evenly">
             <div class="container d-flex flex-column text-center w-50 h-50 p-5 fondBoutons menuMENU">
-                <form action="/addMatiere" method="post">
-                    <div class="input-group d-flex w-50 mx-auto">
-                        <span class="input-group-text" id="">Matière : </span>
-                        <input type="text" class="form-control" name="nom" id="nom" required>
-                    </div>
-                    <hr>
-
-                    <div class="text-center">
-                        <button type="submit"
-                            class="btn w-25 btn-square-xl button1 btn btn-light btn-lg btn-block">Confirmer</button>
-                    </div>
-                </form>
+                <% dataMatiere.forEach(function(matiere) { %>
+                    <form action="/modifierMatieres/<%=matiere.mt_id%>" method="post">
+                        <div class="input-group d-flex w-50 mx-auto">
+                            <span class="input-group-text" id="">Matière : </span>
+                            <input type="text" class="form-control" name="nom" id="nom" value="<%=matiere.mt_nom%>" required>
+                        </div>
+                        <hr>
+                        <% })%>
+                            <div class="text-center">
+                                <button type="submit"
+                                    class="btn w-25 btn-square-xl button1 btn btn-light btn-lg btn-block">Confirmer</button>
+                            </div>
+                    </form>
             </div>
         </div>
 

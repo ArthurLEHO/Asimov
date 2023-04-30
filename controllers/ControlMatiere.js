@@ -50,12 +50,12 @@ const controllerClasse = {
 
 			try {
 
-				const data1 = await modelMatiere.Matieres.afficherUneMatiere(req)
-				const data2 = await modelProfesseurs.Professeurs.afficherProfesseurs()
+				const dataMatiere = await modelMatiere.Matieres.afficherUneMatiere(req)
+				console.log(dataMatiere)
 
-				if (data1) {
+				if (dataMatiere) {
 
-					res.render("modifierMatieres", { dataMatiere: data1, cookie: req.cookies.role, dataProfesseur: data2 })
+					res.render("modifierMatieres", { dataMatiere: dataMatiere, cookie: req.cookies.role })
 
 				} else {
 
@@ -171,10 +171,11 @@ const controllerClasse = {
 			try {
 
 				const data = await modelMatiere.Matieres.modifierMatiere(req)
+				const dataListeMatieres = await modelMatiere.Matieres.listeMatieres(req)
 
 				if (data) {
 
-					res.redirect("/matieres");
+					res.render("matieres", { dataListeMatieres: dataListeMatieres });
 
 				} else {
 
