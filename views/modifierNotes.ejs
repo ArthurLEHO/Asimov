@@ -19,35 +19,28 @@
         <div class="d-flex justify-content-space-evenly">
             <div class="container d-flex flex-column text-center w-75 h-25 p-5 fondBoutons menuMENU">
                 <% dataNote.forEach(function(note) { %>
-                    <form action="/modifierNotes/:nt_id" method="post">
+                    <form action="/modifierNotes/<%=note.nt_id%>" method="post">
                         <div class="input-group d-flex p-3 w-50 mx-auto">
                             <label for="listeEleves"></label>
                             <span class="input-group-text" id="">Élève : </span>
-                            <select id="listeEleves" name="idEleve" required>
-                                <option value="<%= note.el_id %>">
-                                    <%= note.el_nom%>
-                                        <%= note.el_prenom %>
-                                </option>
-                            </select>
+                            <input type="text" class="form-control" name="el_nom" id="el_nom"
+                                value="<%=note.el_nom%> <%=note.el_prenom%>" readonly>
 
                             <!-- Ajout de l'espace -->
                             <div class="m-2"></div>
 
                             <label for="listematieres"></label>
                             <span class="input-group-text" id="">Matière : </span>
-                            <select id="listematieres" name="idMatiere" required>
-                                <option value="<%= note.mt_id %>">
-                                    <%= note.mt_nom %>
-                                </option>
-                            </select>
+                            <input type="text" class="form-control" name="mt_matiere" id="mt_matiere"
+                                value="<%=note.mt_nom%>" readonly>
                         </div>
                         <hr>
 
                         <div class="input-group d-flex p-3 w-50 mx-auto">
                             <label for=""></label>
                             <span class="input-group-text" id="">Date : </span>
-                            <input type="date" class="form-control" name="nt_date" id="nt_date"
-                                value="<%= note.nt_date %>" required>
+                            <input type="text" class="form-control" name="nt_date" id="nt_date"
+                                value="<%= note.nt_date %>" readonly>
 
                             <!-- Ajout de l'espace -->
                             <div class="m-2"></div>

@@ -48,7 +48,7 @@ const Notes = {
     async afficherUneNote(req) {
 
         let id = req.params.nt_id
-        let requeteSQL = "SELECT el_id, nt_resultat, DATE_FORMAT(nt_date, '%d/%m/%Y') as nt_date, mt_nom, el_nom, el_prenom, mt_id FROM notes, eleves, matieres WHERE nt_idEleve = el_id AND nt_matiere = mt_id AND nt_id = ?"
+        let requeteSQL = "SELECT nt_id, el_id, nt_resultat, DATE_FORMAT(nt_date, '%d/%m/%Y') as nt_date, mt_nom, el_nom, el_prenom, mt_id FROM notes, eleves, matieres WHERE nt_idEleve = el_id AND nt_matiere = mt_id AND nt_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -140,18 +140,13 @@ const Notes = {
     async modifierNote(req){
 
         let id = req.params.nt_id
-        const dateInput = req.body.nt_date;
-        const date = new Date(dateInput);
-        let dateBonFormat = date.toISOString().slice(0, 10);
-
-        let eleve = req.body.idEleve
-        let matiere = req.body.idMatiere
         let resultat = req.body.nt_resultat
-        let requeteSQL = "UPDATE notes SET nt_matiere = ?, nt_idEleve = ?, nt_resultat = ?, nt_date = ? WHERE nt_id = ?"
+        console.log(resultat, id)
+        let requeteSQL = "UPDATE notes SET nt_resultat = ? WHERE nt_id = ?"
 
         return new Promise((resolve, reject)=>{
 
-            mysqlconnexion.query(requeteSQL, [matiere, eleve, resultat, dateBonFormat, id], (err, lignes, champs) => {
+            mysqlconnexion.query(requeteSQL, [resultat, id], (err, lignes, champs) => {
 
                 if(err){
 

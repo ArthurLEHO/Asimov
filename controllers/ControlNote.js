@@ -131,6 +131,7 @@ const controllerClasse = {
             try {
 
                 const data = await modelNote.Notes.ajouterNotes(req)
+                const dataListeNotes = await modelNote.Notes.afficherToutesNotes(req)
                 console.log(req.cookies.role)
 
                 if (data) {
@@ -139,7 +140,7 @@ const controllerClasse = {
 
                 } else {
 
-                    res.render("probleme", { cookie: req.cookies.role })
+                    res.render("probleme", { dataListeNotes: dataListeNotes, cookie: req.cookies.role })
                 }
 
             } catch (error) {
@@ -218,10 +219,12 @@ const controllerClasse = {
             try {
 
                 const data = await modelNote.Notes.modifierNote(req)
+                console.log(data)
+                const dataListeNotes = await modelNote.Notes.afficherToutesNotes(req)
 
                 if (data) {
 
-                    res.render("suiviNotes", { cookie: req.cookies.role });
+                    res.render("suiviNotes", { dataListeNotes: dataListeNotes, cookie: req.cookies.role });
 
                 } else {
 
