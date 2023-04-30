@@ -21,24 +21,25 @@
             </thead>
             <tbody>
                 <% dataProfesseur.forEach((data, index)=>{%>
-                <tr id=<%=data.ps_id%>>
-                    <td>
-                        <%=data.ps_nom%>
-                    </td>
-                    <td>
-                        <%=data.ps_prenom%>
-                    </td>
-                    <td>
-                        <%=data.mt_nom%>
-                    </td>
-                    <td>
-                        <div class="btn-group" role="group">
-                            <a href="http://localhost:3000/modifierProfs/<%=data.ps_id%>"><button type="button" class="btn btn-secondary">Modifier</button></a>
-                            <button type="button" class="btn btn-danger">Supprimer</button>
-                        </div>
-                    </td>                    
-                </tr>
-                <%})%>
+                    <tr id=<%=data.ps_id%>>
+                        <td>
+                            <%=data.ps_nom%>
+                        </td>
+                        <td>
+                            <%=data.ps_prenom%>
+                        </td>
+                        <td>
+                            <%=data.mt_nom%>
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a href="http://localhost:3000/modifierProfs/<%=data.ps_id%>"><button type="button"
+                                        class="btn btn-secondary">Modifier</button></a>
+                                <button type="button" class="btn btn-danger">Supprimer</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <%})%>
             </tbody>
         </table>
     </body>
