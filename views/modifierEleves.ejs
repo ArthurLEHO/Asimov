@@ -12,53 +12,53 @@
     </head>
 
     <body>
-        <h1 class="d-flex justify-content-left">Ajouter élève</h1>
+        <h1 class="d-flex justify-content-left">Modifier élève</h1>
         <hr>
         <p><br></p>
 
         <div class="d-flex justify-content-space-evenly">
             <div class="container d-flex flex-column text-center w-75 h-25 p-5 fondBoutons menuMENU">
                 <div class="input-group d-flex w-50 mx-auto">
-                    <form action="/addEleve" method="post">
-                        <div class="input-group">
-                            <label for="prof_nom"></label>
-                            <span class="input-group-text" id="">Nom : </span>
-                            <input type="text" class="form-control" name="el_nom" id="el_nom" required>
+                    <% dataEleve.forEach(function(eleve) { %>
+                        <form action="/modifierEleves/<%=eleve.el_id%>" method="post">
+                            <div class="input-group">
+                                <label for="prof_nom"></label>
+                                <span class="input-group-text" id="">Nom : </span>
+                                <input type="text" class="form-control" name="el_nom" id="el_nom" value="<%=eleve.el_nom%>" required>
 
-                            <!-- Ajout de l'espace -->
-                            <div class="m-2"></div>
+                                <!-- Ajout de l'espace -->
+                                <div class="m-2"></div>
 
-                            <label for="prof_prenom"></label>
-                            <span class="input-group-text" id="">Prénom : </span>
-                            <input type="text" class="form-control" name="el_prenom" id="el_prenom" required>
-                        </div>
+                                <label for="prof_prenom"></label>
+                                <span class="input-group-text" id="">Prénom : </span>
+                                <input type="text" class="form-control" name="el_prenom" id="el_prenom" value="<%=eleve.el_prenom%>" required>
+                            </div>
 
-                        <div class="input-group w-75 p-3 mx-auto">
-                            <label for="listeclasses"></label>
-                            <span class="input-group-text" id="">Sélectionnez une classe : </span>
-                            <select id="listeclasses" name="el_idClasse" required>
-                                <% dataListeClasses.forEach(function(classes) { %>
-                                    <option value="<%= classes.cl_id %>">
-                                        <%= classes.cl_nom %>
-                                    </option>
-                                    <% }); %>
-                            </select>
-                        </div>
+                            <div class="input-group w-75 p-3 mx-auto">
+                                <label for="listeclasses"></label>
+                                <span class="input-group-text" id="">Sélectionnez une classe : </span>
+                                <select id="listeclasses" name="el_idClasse" required>
+                                    <% dataListeClasses.forEach(function(classes) { %>
+                                        <option value="<%= classes.cl_id %>">
+                                            <%= classes.cl_nom %>
+                                        </option>
+                                        <% }); %>
+                                </select>
+                            </div>
 
-                        <div class="input-group w-50 p-3 mx-auto">
-                            <label for="prof_mdp"></label>
-                            <span class="input-group-text" id="">Mot de passe : </span>
-                            <input type="password" class="form-control" name="el_mdp" id="el_mdp" required>
-                        </div>
-
+                            <div class="input-group w-50 p-3 mx-auto">
+                                <label for="prof_mdp"></label>
+                                <span class="input-group-text" id="">Mot de passe : </span>
+                                <input type="password" class="form-control" name="el_mdp" id="el_mdp" value="<%=eleve.el_motdepasse%>" required>
+                            </div>
                 </div>
                 <hr>
-
-                <div class="text-center">
-                    <button type="submit"
-                        class="btn w-25 btn-square-xl button1 btn btn-light btn-lg btn-block">Confirmer</button>
-                </div>
-                </form>
+                <% })%>
+                    <div class="text-center">
+                        <button type="submit"
+                            class="btn w-25 btn-square-xl button1 btn btn-light btn-lg btn-block">Confirmer</button>
+                    </div>
+                    </form>
             </div>
         </div>
 

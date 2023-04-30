@@ -22,7 +22,7 @@ const Classes = {
     //Fonction pour le proviseur : permet d'afficher toutes les classes de l'établissement
     async afficherToutesClasses() {
 
-        let requeteSQL = "SELECT * FROM classes, personnelscolaires WHERE cl_IdProf = ps_id ORDER BY cl_nom"
+        let requeteSQL = "SELECT * FROM classes, personnelscolaires WHERE cl_IdProf = ps_id"
 
         return new Promise((resolve, reject) => {
 

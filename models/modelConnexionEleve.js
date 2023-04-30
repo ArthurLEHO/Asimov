@@ -42,7 +42,7 @@ const ConnexionEleve = {
     //Fonction pour le proviseur : permet d'afficher tous les élèves de l'établissement dans l'ordre alphabétique
     async afficherLesEleves() {
 
-        let requeteSQL = "SELECT el_nom, el_prenom, cl_nom FROM eleves, classes WHERE el_idClasse = cl_id ORDER BY cl_nom"
+        let requeteSQL = "SELECT el_id, el_nom, el_prenom, cl_nom FROM eleves, classes WHERE el_idClasse = cl_id ORDER BY cl_nom"
 
         return new Promise((resolve, reject) => {
 
@@ -64,7 +64,7 @@ const ConnexionEleve = {
     //Fonction pour le proviseur : permet d'afficher un élève en particulier de l'établissement
     async afficherUnEleve(req) {
 
-        let id = req.params.id
+        let id = req.params.el_id
         let requeteSQL = "SELECT * FROM eleves INNER JOIN classes ON el_idClasse = cl_id WHERE el_id = ?"
 
         return new Promise((resolve, reject) => {
@@ -158,16 +158,17 @@ const ConnexionEleve = {
     //Fonction pour le proviseur : permet de modifier un élève de l'établissement
     async modifierEleve(req) {
 
-        let id = req.params.id
-        let nom = req.body.nom
-        let prenom = req.body.prenom
-        let classe = req.body.classe
+        let id = req.params.el_id
+        let el_nom = req.body.el_nom
+        let el_prenom = req.body.el_prenom
+        let el_idClasse = req.body.el_idClasse
+        let el_mdp = req.body.el_mdp
 
-        let requeteSQL = "UPDATE eleves SET el_nom = ?, el_prenom = ?, el_idClasse = ? WHERE el_id = ?"
+        let requeteSQL = "UPDATE eleves SET el_nom = ?, el_prenom = ?, el_idClasse = ?, el_motdepasse = ? WHERE el_id = ?"
 
         return new Promise((resolve, reject) => {
 
-            mysqlconnexion.query(requeteSQL, [nom, prenom, age, classe, id], (err, lignes, champs) => {
+            mysqlconnexion.query(requeteSQL, [el_nom, el_prenom, el_idClasse, el_mdp, id], (err, lignes, champs) => {
 
                 if (err) {
 
