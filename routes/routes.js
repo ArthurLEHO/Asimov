@@ -42,6 +42,8 @@ router.get('/eleves', eleveCtrl.affichageEleves);
 router.get('/addClasse', classeCtrl.afficherAjouterClasse);
 router.post('/addClasse', classeCtrl.ajouterClasse);
 router.get('/classes', classeCtrl.affichageToutesClasses)
+router.get('/modifierClasses/:cl_id', classeCtrl.affichageUneClasse);
+router.post('/modifierClasses/:cl_id', classeCtrl.modifierClasse);
 
 
 module.exports = router 

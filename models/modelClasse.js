@@ -66,9 +66,8 @@ const Classes = {
     //Fonction pour le proviseur : permet d'afficher une classe en particulier
     async afficherUneClasse(req) {
 
-        let id = req.params.id
+        let id = req.params.cl_id
         let requeteSQL = "SELECT * FROM classes WHERE cl_id = ?"
-
         return new Promise((resolve, reject) => {
 
             mysqlconnexion.query(requeteSQL, [id], (error, elements) => {
@@ -133,14 +132,14 @@ const Classes = {
     //Fonction pour le proviseur : permet de modifier une classe de l'établissement
     async modifierClasse(req) {
 
-        let id = req.params.id
-        let nom = req.body.nom
-        let professeur = req.body.professeur
+        let id = req.params.cl_id
+        let cl_nom = req.body.cl_nom
+        let cl_idProf = req.body.idProf
         let requeteSQL = "UPDATE classes SET cl_nom = ?, cl_IdProf = ? WHERE cl_id = ?"
 
         return new Promise((resolve, reject) => {
 
-            mysqlconnexion.query(requeteSQL, [nom, professeur, id], (err, lignes, champs) => {
+            mysqlconnexion.query(requeteSQL, [cl_nom, cl_idProf, id], (err, lignes, champs) => {
 
                 if (err) {
 

@@ -78,7 +78,7 @@ const controllerClasse = {
                 console.log(error)
             }
         }
-    },      
+    },
 
     //Fonction pour le principal : permet d'afficher une classe de l'établissement en particulier
     async affichageUneClasse(req, res) {
@@ -88,16 +88,16 @@ const controllerClasse = {
 
             try {
 
-                const data1 = await modelClasses.Classes.afficherUneClasse(req)
-                const data2 = await modelProfesseurs.Professeurs.afficherProfesseurs()
+                const dataClasse = await modelClasses.Classes.afficherUneClasse(req)
+                const dataListeProfs = await modelProfesseurs.ConnexionProf.afficherProfesseurs(req)
 
-                if (data1) {
+                if (dataClasse && dataListeProfs) {
 
-                    res.render("modifierClasses", { dataClasse: data1, cookie: req.cookies.role, dataProfesseur: data2 })
+                    res.render("modifierClasses", { dataClasse: dataClasse, dataListeProfs: dataListeProfs, cookie: req.cookies.role })
 
                 } else {
 
-                    res.render("accueil")
+                    res.render("probleme", { cookie: req.cookies.role })
                 }
 
             } catch (error) {
@@ -122,7 +122,7 @@ const controllerClasse = {
         const dataListeProfs = await modelProfesseurs.ConnexionProf.afficherProfesseurs(req)
 
         if (req.cookies.role == "Principal") {
-            res.render('addClasse', {dataListeProfs: dataListeProfs})
+            res.render('addClasse', { dataListeProfs: dataListeProfs })
         } else {
             res.render('refus')
         }
@@ -213,14 +213,15 @@ const controllerClasse = {
             try {
 
                 const data = await modelClasses.Classes.modifierClasse(req)
+                const dataListeClasses = await modelClasses.Classes.afficherToutesClasses(req)
 
                 if (data) {
 
-                    res.redirect("/classes/principal");
+                    res.render("classes", { dataListeClasses: dataListeClasses });
 
                 } else {
 
-                    res.redirect("/classes/modifierClasse/" + req.params.id);
+                    res.render("modifierClasses/" + req.params.id);
                 }
 
             } catch (error) {
