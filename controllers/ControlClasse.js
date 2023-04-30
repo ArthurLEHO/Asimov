@@ -1,6 +1,9 @@
+// Importation des classes de modèles pour les classes, les professeurs et les directeurs
 const modelClasses = require('../models/modelClasse');
 const modelProfesseurs = require('../models/modelConnexionProf');
 const modelDirecteur = require('../models/modelConnexionDirecteur');
+
+// Importation du module cookie-parser pour la gestion des cookies
 const cookieParser = require('cookie-parser');
 
 const controllerClasse = {

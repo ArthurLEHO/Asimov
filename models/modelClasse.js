@@ -1,15 +1,22 @@
+// Importer le module mysql pour interagir avec la base de données MySQL
 const mysql = require('mysql')
+
+// Importer le module iniparser pour lire le fichier de configuration DB.ini
 const iniparser = require('iniparser')
+
+// Parser le fichier de configuration DB.ini pour récupérer les informations de connexion à la base de données
 let configDB = iniparser.parseSync('./DB.ini')
 
+// Créer une connexion à la base de données MySQL en utilisant les informations de connexion du fichier de configuration
 let mysqlconnexion = mysql.createConnection({
 
-    host: configDB['dev']['host'],
-    user: configDB['dev']['user'],
-    password: configDB['dev']['password'],
-    database: configDB['dev']['database']
+    host: configDB['dev']['host'], // L'adresse du serveur MySQL
+    user: configDB['dev']['user'], // Le nom d'utilisateur MySQL
+    password: configDB['dev']['password'], // Le mot de passe de l'utilisateur MySQL
+    database: configDB['dev']['database'] // Le nom de la base de données MySQL à utiliser
 
 });
+
 
 mysqlconnexion.connect((err) => {
 

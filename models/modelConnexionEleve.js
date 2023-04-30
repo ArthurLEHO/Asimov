@@ -1,7 +1,11 @@
+// Importer les modules mysql et iniparser
 const mysql = require('mysql')
 const iniparser = require('iniparser')
+
+// Charger la configuration de la base de données depuis le fichier DB.ini
 let configDB = iniparser.parseSync('./DB.ini')
 
+// Créer une connexion à la base de données MySQL en utilisant les paramètres de configuration chargés depuis le fichier
 let mysqlconnexion = mysql.createConnection({
 
     host: configDB['dev']['host'],
@@ -11,8 +15,9 @@ let mysqlconnexion = mysql.createConnection({
 
 });
 
+// Établir la connexion à la base de données MySQL
 mysqlconnexion.connect((err) => {
-
+    // Si une erreur se produit, afficher un message d'erreur avec le détail de l'erreur en format JSON
     if (err) console.log('BDD connexion échouée \n Erreur: ' + JSON.stringify(err))
 
 })

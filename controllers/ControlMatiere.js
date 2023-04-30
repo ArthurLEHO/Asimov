@@ -1,3 +1,4 @@
+// Import des modules nécessaires
 const modelMatiere = require('../models/modelMatiere');
 const modelProfesseurs = require('../models/modelConnexionProf');
 const modelDirecteur = require('../models/modelConnexionDirecteur');
