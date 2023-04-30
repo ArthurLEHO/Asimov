@@ -36,6 +36,8 @@ router.post('/modifierMatieres/:mt_id', matiereCtrl.modifierMatiere);
 router.get('/addProfesseur', profCtrl.afficherAjouterProfesseur);
 router.post('/addProfesseur', profCtrl.ajouterProfesseur);
 router.get('/professeurs', profCtrl.affichageProfesseurs);
+router.get('/modifierProfs/:ps_id', profCtrl.affichageUnProfesseur);
+router.post('/modifierProfs/:ps_id', profCtrl.modifierProfesseur);
 
 router.get('/addEleve', eleveCtrl.afficherAjouterEleve);
 router.post('/addEleve', eleveCtrl.ajouterEleve);
