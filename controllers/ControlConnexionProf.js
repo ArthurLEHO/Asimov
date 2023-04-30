@@ -44,11 +44,11 @@ const controllerConnexionProf = {
 
 			try {
 
-				const data1 = await modelConnexionProf.ConnexionProf.afficherProfesseurs2()
+				const dataProfesseur = await modelConnexionProf.ConnexionProf.afficherProfesseurs2()
 
-				if (data1) {
+				if (dataProfesseur) {
 
-					res.render("professeurs", { cookie: req.cookies.role, dataTotale: data1 })
+					res.render("professeurs", { cookie: req.cookies.role, dataProfesseur: dataProfesseur })
 
 				} else {
 
@@ -81,12 +81,12 @@ const controllerConnexionProf = {
 
 			try {
 
-				const data1 = await modelProfesseur.Professeurs.afficherUnProfesseur(req)
-				const data2 = await modelMatiere.Matieres.afficherMatieres()
+				const dataProf = await modelConnexionProf.ConnexionProf.afficherUnProfesseur(req)
+				const dataListeMatieres = await modelMatiere.Matieres.listeMatieres(req)
 
-				if (data1) {
+				if (dataProf) {
 
-					res.render("modifierProfesseurs", { dataProfesseur: data1, dataMatiere: data2 })
+					res.render("modifierProfs", { dataProf: dataProf, dataListeMatieres: dataListeMatieres })
 
 				} else {
 
@@ -114,7 +114,7 @@ const controllerConnexionProf = {
 	async afficherAjouterProfesseur(req, res) {
 		const dataListeMatieres = await modelMatiere.Matieres.listeMatieres(req)
 		if (req.cookies.role == "Principal") {
-			res.render('addProfesseur', {dataListeMatieres: dataListeMatieres})
+			res.render('addProfesseur', { dataListeMatieres: dataListeMatieres })
 		} else {
 			res.render('refus')
 		}
@@ -202,11 +202,12 @@ const controllerConnexionProf = {
 
 			try {
 
-				const data = await modelProfesseur.Professeurs.modifierProfesseur(req)
+				const data = await modelConnexionProf.ConnexionProf.modifierProfesseur(req)
+				const dataProfesseur = await modelConnexionProf.ConnexionProf.afficherProfesseurs2(req)
 
 				if (data) {
 
-					res.redirect("/professeurs");
+					res.render("professeurs", { dataProfesseur: dataProfesseur });
 
 				} else {
 

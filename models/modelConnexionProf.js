@@ -68,7 +68,7 @@ const ConnexionProf = {
     //Fonction pour le principal : permet d'afficher chaque professeur avec la matière qu'il enseigne'
     async afficherProfesseurs2() {
 
-        let requeteSQL = "SELECT ps_nom, ps_prenom, mt_nom FROM personnelscolaires, matieres WHERE ps_statut = 'Professeur' AND ps_idMatiere = mt_id ORDER BY ps_nom"
+        let requeteSQL = "SELECT ps_id, ps_nom, ps_prenom, mt_nom FROM personnelscolaires, matieres WHERE ps_statut = 'Professeur' AND ps_idMatiere = mt_id ORDER BY ps_nom"
 
         return new Promise((resolve, reject) => {
 
@@ -89,7 +89,7 @@ const ConnexionProf = {
     //Fonction pour le principal : permet d'afficher un professeur en particulier
     async afficherUnProfesseur(req) {
 
-        let id = req.params.id
+        let id = req.params.ps_id
         let requeteSQL = "SELECT * FROM personnelscolaires WHERE ps_id = ?"
 
         return new Promise((resolve, reject) => {
@@ -158,14 +158,16 @@ const ConnexionProf = {
     //Fonction pour le principal : permet de modifier un professeur de l'établissement
     async modifierProfesseur(req) {
 
-        let id = req.params.id
-        let nom = req.body.nom
-        let prenom = req.body.prenom
-        let requeteSQL = "UPDATE personnelscolaires SET ps_nom = ?, ps_prenom = ? WHERE ps_id = ?"
+        let id = req.params.ps_id
+        let nom = req.body.prof_nom
+        let prenom = req.body.prof_prenom
+        let mdp = req.body.prof_mdp
+        let idMatiere = req.body.listematieres
+        let requeteSQL = "UPDATE personnelscolaires SET ps_nom = ?, ps_prenom = ?, ps_motdepasse = ?, ps_idMatiere = ? WHERE ps_id = ?"
 
         return new Promise((resolve, reject) => {
 
-            mysqlconnexion.query(requeteSQL, [nom, prenom, id], (err, lignes, champs) => {
+            mysqlconnexion.query(requeteSQL, [nom, prenom, mdp, idMatiere, id], (err, lignes, champs) => {
 
                 if (err) {
 

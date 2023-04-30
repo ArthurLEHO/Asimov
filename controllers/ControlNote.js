@@ -10,51 +10,52 @@ const controllerClasse = {
     //Le principal a accès à toutes les notes de n'importe quel élève
     //Les professeurs n'ont accès aux notes de leurs élèves que si ils sont leur professeur principal
     //Les élèves ne peuvent accéder qu'à leurs notes
-    async affichageNote(req, res) {
+    // async affichageNote(req, res) {
 
-        //Sécurité au niveau du serveur : si utilisateur identifié renvoit les données, sinon renvoit sur une page de refus
-        if (req.cookies.role == "Principal" || req.cookies.role == "Professeur" || req.cookies.role == "Eleve") {
+    //     //Sécurité au niveau du serveur : si utilisateur identifié renvoit les données, sinon renvoit sur une page de refus
+    //     if (req.cookies.role == "Principal" || req.cookies.role == "Professeur" || req.cookies.role == "Eleve") {
 
-            try {
-                const data1 = await modelNote.Notes.afficherNotesEleve(req, res)
-                const data2 = await modelMatiere.Matieres.afficherMatieres()
-                if (data1) {
-                    res.render("suiviNotes", { dataNotes: data1, dataMatieres: data2, cookie: req.cookies.role, idEleve: req.cookies.idEleve })
+    //         try {
+    //             const data1 = await modelNote.Notes.afficherNotesEleve(req, res)
+    //             const data2 = await modelMatiere.Matieres.afficherMatieres()
+    //             if (data1) {
+    //                 res.render("suiviNotes", { dataNotes: data1, dataMatieres: data2, cookie: req.cookies.role, idEleve: req.cookies.idEleve })
 
-                } else {
-                    res.render("probleme", { cookie: req.cookies.role })
-                }
+    //             } else {
+    //                 res.render("probleme", { cookie: req.cookies.role })
+    //             }
 
-            } catch (error) {
+    //         } catch (error) {
 
-                console.log(error)
-            }
+    //             console.log(error)
+    //         }
 
-        } else {
+    //     } else {
 
-            try {
+    //         try {
 
-                res.render("refus")
+    //             res.render("refus")
 
-            } catch (error) {
+    //         } catch (error) {
 
-                console.log(error)
-            }
-        }
-    },
+    //             console.log(error)
+    //         }
+    //     }
+    // },
 
     async afficherToutesLesNotes(req, res) {
-        try {
-            const dataListeNotes = await modelNote.Notes.afficherToutesNotes(req)
-            if (dataListeNotes) {
-                res.render("suiviNotes", { dataListeNotes: dataListeNotes, cookie: req.cookies.role })
-            } else {
-                res.render("probleme")
+        if (req.cookies.role == "Principal" || req.cookies.role == "Professeur" || req.cookies.role == "Eleve") {
+            try {
+                const dataListeNotes = await modelNote.Notes.afficherToutesNotes(req)
+                if (dataListeNotes) {
+                    res.render("suiviNotes", { dataListeNotes: dataListeNotes, cookie: req.cookies.role })
+                } else {
+                    res.render("probleme")
+                }
+            } catch (error) {
+                console.log(error)
             }
-        } catch (error) {
-            console.log(error)
         }
-
     },
 
     // async redirectionNoteEleve(req, res) {
@@ -201,13 +202,13 @@ const controllerClasse = {
         }
     },
 
-    async afficherModifierNote(req, res) {
-        if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
-            res.render('modifierNotes');
-        } else {
-            res.render("refus")
-        }
-    },
+    // async afficherModifierNote(req, res) {
+    //     if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
+    //         res.render('modifierNotes');
+    //     } else {
+    //         res.render("refus")
+    //     }
+    // },
 
     //Fonction pour le principal ou professeur : permet de modifier une note
     //Le principal peut modifier n'importe quelle note

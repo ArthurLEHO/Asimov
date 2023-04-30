@@ -123,12 +123,12 @@ const controllerConnexionEleve = {
 
 			try {
 
-				const data = await modelEleves.Eleves.afficherUnEleve(req)
-				const data2 = await modelClasses.Classes.afficherToutesClasses()
+				const data = await modelConnexionEleve.ConnexionEleve.afficherUnEleve(req)
+				const data2 = await modelClasse.Classes.afficherToutesClasses()
 
 				if (data) {
 
-					res.render("modifierEleves", { dataEleve: data, dataClasse: data2 })
+					res.render("modifierEleves", { dataEleve: data, dataListeClasses: data2 })
 
 				} else {
 
@@ -156,7 +156,7 @@ const controllerConnexionEleve = {
 	async afficherAjouterEleve(req, res) {
 		const dataListeClasses = await modelClasse.Classes.afficherToutesClasses(req)
 		if (req.cookies.role == "Principal") {
-			res.render("addEleve", {dataListeClasses: dataListeClasses})
+			res.render("addEleve", { dataListeClasses: dataListeClasses })
 		} else {
 			res.render("refus")
 		}
@@ -244,11 +244,12 @@ const controllerConnexionEleve = {
 
 			try {
 
-				const data = await modelEleves.Eleves.modifierEleve(req)
+				const data = await modelConnexionEleve.ConnexionEleve.modifierEleve(req)
+				const dataEleves = await modelConnexionEleve.ConnexionEleve.afficherLesEleves(req)
 
 				if (data) {
 
-					res.redirect("/eleves");
+					res.render("eleves", { dataEleves: dataEleves });
 
 				} else {
 

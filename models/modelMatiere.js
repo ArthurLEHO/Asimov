@@ -42,7 +42,7 @@ const Matieres = {
     //Fonction pour le proviseur : permet d'afficher une matière en particulier
     async afficherUneMatiere(req) {
 
-        let id = req.params.id
+        let id = req.params.mt_id
         let requeteSQL = "SELECT * FROM matieres WHERE mt_id = ?"
 
         return new Promise((resolve, reject) => {
@@ -68,7 +68,7 @@ const Matieres = {
         let requeteSQL = "INSERT INTO matieres (mt_nom) VALUES(?)"
 
         return new Promise((resolve, reject) => {
-            
+
             mysqlconnexion.query(requeteSQL, [nom], (err, lignes, champs) => {
 
                 if (err) {
@@ -108,45 +108,25 @@ const Matieres = {
     //Fonction pour le proviseur : permet de modifier une matière en particulier
     async modifierMatiere(req) {
 
-        let id = req.params.id
+        let id = req.params.mt_id
         let nom = req.body.nom
-        let professeur = req.body.professeur
-        let requeteSQL = "UPDATE matieres SET mt_nom = ?, mt_IdProfesseur = ? WHERE mt_id = ?"
+        let requeteSQL = "UPDATE matieres SET mt_nom = ? WHERE mt_id = ?"
 
         return new Promise((resolve, reject) => {
 
-            //Si le professeur est renseigné dans le body alors la matière lui est attribuée
-            if (professeur) {
+            mysqlconnexion.query(requeteSQL, [nom, id], (err, lignes, champs) => {
 
-                mysqlconnexion.query(requeteSQL, [nom, professeur, id], (err, lignes, champs) => {
+                if (err) {
 
-                    if (err) {
+                    return reject(err)
 
-                        return reject(err)
+                }
 
-                    }
+                return resolve(lignes)
 
-                    return resolve(lignes)
-
-                })
-
-                //Sinon dans la table matiere, la colonne matiere_IdProfesseur est créée à NULL
-            } else {
-
-                mysqlconnexion.query(requeteSQL, [nom, null, id], (err, lignes, champs) => {
-
-                    if (err) {
-
-                        return reject(err)
-
-                    }
-
-                    return resolve(lignes)
-
-                })
-            }
+            })
         })
-    }
+    },
 }
 
 module.exports = {
