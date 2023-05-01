@@ -47,7 +47,7 @@ const ConnexionEleve = {
     //Fonction pour le proviseur : permet d'afficher tous les élèves de l'établissement dans l'ordre alphabétique
     async afficherLesEleves() {
 
-        let requeteSQL = "SELECT el_id, el_nom, el_prenom, cl_nom FROM eleves, classes WHERE el_idClasse = cl_id ORDER BY cl_nom"
+        let requeteSQL = "SELECT el_id, el_nom, el_prenom, cl_nom FROM eleves LEFT JOIN classes ON eleves.el_idClasse = classes.cl_id ORDER BY cl_nom;"
 
         return new Promise((resolve, reject) => {
 
@@ -70,7 +70,7 @@ const ConnexionEleve = {
     async afficherUnEleve(req) {
 
         let id = req.params.el_id
-        let requeteSQL = "SELECT * FROM eleves INNER JOIN classes ON el_idClasse = cl_id WHERE el_id = ?"
+        let requeteSQL = "SELECT * FROM eleves LEFT JOIN classes ON eleves.el_idClasse = classes.cl_id WHERE eleves.el_id = ?"
 
         return new Promise((resolve, reject) => {
 
@@ -141,7 +141,7 @@ const ConnexionEleve = {
     //Fonction pour le proviseur : permet de supprimer un élève de l'établissement
     async supprimerEleve(req) {
 
-        let id = req.params.id
+        let id = req.params.el_id
         let requeteSQL = "DELETE FROM eleves WHERE el_id = ?"
 
         return new Promise((resolve, reject) => {

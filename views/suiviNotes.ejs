@@ -41,8 +41,10 @@
                         <% if (cookie !='Eleve' ) { %>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="http://localhost:3000/modifierNotes/<%=note.nt_id%>"><button type="button" class="btn btn-secondary">Modifier</button></a>
-                                    <button type="button" class="btn btn-danger">Supprimer</button>
+                                    <a href="http://localhost:3000/modifierNotes/<%=note.nt_id%>"><button type="button"
+                                            class="btn btn-secondary">Modifier</button></a>
+                                    <a href="http://localhost:3000/supprimerNotes/<%=note.nt_id%>"><button type="button"
+                                            class="btn btn-danger">Supprimer</button></a>
                                 </div>
                             </td>
                             <% } %>

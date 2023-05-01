@@ -68,7 +68,7 @@ const ConnexionProf = {
     //Fonction pour le principal : permet d'afficher chaque professeur avec la matière qu'il enseigne'
     async afficherProfesseurs2() {
 
-        let requeteSQL = "SELECT ps_id, ps_nom, ps_prenom, mt_nom FROM personnelscolaires, matieres WHERE ps_statut = 'Professeur' AND ps_idMatiere = mt_id ORDER BY ps_nom"
+        let requeteSQL = "SELECT ps_id, ps_nom, ps_prenom, mt_nom FROM personnelscolaires LEFT JOIN matieres ON personnelscolaires.ps_idMatiere = matieres.mt_id WHERE ps_statut = 'Professeur' ORDER BY ps_nom"
 
         return new Promise((resolve, reject) => {
 
@@ -136,7 +136,7 @@ const ConnexionProf = {
     //Fonction pour le principal : permet de supprimer un professeur de l'établissement
     async supprimerProfesseur(req) {
 
-        let id = req.params.id
+        let id = req.params.ps_id
         let requeteSQL = "DELETE FROM personnelscolaires WHERE ps_id = ?"
 
         return new Promise((resolve, reject) => {

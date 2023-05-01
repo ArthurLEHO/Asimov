@@ -101,7 +101,7 @@ const controllerClasse = {
 
 				if (data) {
 
-					res.render("matieres");
+					res.render("menuDirection");
 
 				} else {
 
@@ -135,10 +135,11 @@ const controllerClasse = {
 			try {
 
 				const data = await modelMatiere.Matieres.supprimerMatiere(req)
+				const dataListeMatieres = await modelMatiere.Matieres.listeMatieres(req)
 
 				if (data) {
 
-					res.redirect("/matieres");
+					res.render("matieres", { dataListeMatieres: dataListeMatieres });
 
 				} else {
 

@@ -49,11 +49,11 @@ const controllerConnexionEleve = {
 
 			try {
 
-				const data1 = await modelConnexionEleve.ConnexionEleve.afficherLesEleves(req)
+				const dataEleves = await modelConnexionEleve.ConnexionEleve.afficherLesEleves(req)
 
-				if (data1) {
+				if (dataEleves) {
 
-					res.render("eleves", { cookie: req.cookies.role, dataEleves: data1 })
+					res.render("eleves", { cookie: req.cookies.role, dataEleves: dataEleves })
 
 				} else {
 
@@ -174,7 +174,7 @@ const controllerConnexionEleve = {
 
 				if (data) {
 
-					res.render("eleves")
+					res.render("menuDirection")
 
 				} else {
 
@@ -207,11 +207,12 @@ const controllerConnexionEleve = {
 
 			try {
 
-				const data = await modelEleves.Eleves.supprimerEleve(req)
+				const data = await modelConnexionEleve.ConnexionEleve.supprimerEleve(req)
+				const dataEleves = await modelConnexionEleve.ConnexionEleve.afficherLesEleves(req)
 
 				if (data) {
 
-					res.redirect("/eleves");
+					res.render("eleves", { dataEleves: dataEleves });
 
 				} else {
 

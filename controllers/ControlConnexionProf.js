@@ -129,10 +129,11 @@ const controllerConnexionProf = {
 			try {
 
 				const data = await modelConnexionProf.ConnexionProf.ajouterProfesseur(req)
+				const dataProfesseur = await modelConnexionProf.ConnexionProf.afficherProfesseurs2()
 
 				if (data) {
 
-					res.render("professeurs");
+					res.render("menuDirection");
 
 				} else {
 
@@ -165,11 +166,12 @@ const controllerConnexionProf = {
 
 			try {
 
-				const data = await modelProfesseur.Professeurs.supprimerProfesseur(req)
+				const data = await modelConnexionProf.ConnexionProf.supprimerProfesseur(req)
+				const dataProfesseur = await modelConnexionProf.ConnexionProf.afficherProfesseurs2()
 
 				if (data) {
 
-					res.redirect("/professeurs");
+					res.render("professeurs", { dataProfesseur: dataProfesseur, cookie: req.cookies.role });
 
 				} else {
 

@@ -148,7 +148,6 @@ const controllerClasse = {
                 } else {
 
                     console.log("champs incorrects")
-                    res.redirect("/classes");
                 }
 
             } catch (error) {
@@ -178,15 +177,15 @@ const controllerClasse = {
             try {
 
                 const data = await modelClasses.Classes.supprimerClasse(req)
+                const dataListeClasses = await modelClasses.Classes.afficherToutesClasses(req)
 
                 if (data) {
 
-                    res.redirect("/classes/principal");
+                    res.render("classes", { dataListeClasses: dataListeClasses });
 
                 } else {
 
                     console.log("champs incorrects")
-                    res.redirect("/classes/principal");
                 }
 
             } catch (error) {

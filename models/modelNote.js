@@ -122,7 +122,7 @@ const Notes = {
     //Fonction pour le principal ou les professeurs : permet de supprimer une note à un élève
     async supprimerNote(req){
 
-        let id = req.params.id
+        let id = req.params.nt_id
         let requeteSQL = "DELETE FROM notes WHERE nt_id = ?"
 
         return new Promise((resolve, reject)=>{

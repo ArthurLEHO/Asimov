@@ -29,7 +29,7 @@ const Classes = {
     //Fonction pour le proviseur : permet d'afficher toutes les classes de l'établissement
     async afficherToutesClasses() {
 
-        let requeteSQL = "SELECT * FROM classes, personnelscolaires WHERE cl_IdProf = ps_id"
+        let requeteSQL = "SELECT * FROM classes LEFT JOIN personnelscolaires ON classes.cl_IdProf = personnelscolaires.ps_id"
 
         return new Promise((resolve, reject) => {
 
@@ -117,7 +117,7 @@ const Classes = {
     //Fonction pour le proviseur : permet de supprimer une classe
     async supprimerClasse(req) {
 
-        let id = req.params.id
+        let id = req.params.cl_id
         let requeteSQL = "DELETE FROM classes WHERE cl_id = ?"
 
         return new Promise((resolve, reject) => {

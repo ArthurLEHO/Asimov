@@ -86,7 +86,7 @@ const Matieres = {
     //Fonction pour le proviseur : permet de supprimer une matière en particulier
     async supprimerMatiere(req) {
 
-        let id = req.params.id
+        let id = req.params.mt_id
         let requeteSQL = "DELETE FROM matieres WHERE mt_id = ?"
 
         return new Promise((resolve, reject) => {

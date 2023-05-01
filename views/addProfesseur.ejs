@@ -42,12 +42,13 @@
                       <div class="input-group">
                         <label for="listematieres"></label>
                         <span class="input-group-text" id="">Sélectionnez une matière : </span>
-                        <input type="text" class="form-control" list="listematieres" name="listematieres" placeholder="▼" required>
-                        <datalist id="listematieres">
+                        <select id="listematieres" name="listematieres" required>
                           <% dataListeMatieres.forEach(function(matiere) { %>
-                          <option value="<%= matiere.mt_nom %>">
-                          <% }); %>
-                        </datalist>
+                              <option value="<%= matiere.mt_id %>">
+                                  <%= matiere.mt_nom %>
+                              </option>
+                              <% }); %>
+                      </select>
                       </div>
                     </div>
                     <hr>

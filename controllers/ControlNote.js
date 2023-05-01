@@ -138,11 +138,11 @@ const controllerClasse = {
 
                 if (data) {
 
-                    res.render("suiviNotes");
+                    res.render("suiviNotes", { dataListeNotes: dataListeNotes, cookie: req.cookies.role });
 
                 } else {
 
-                    res.render("probleme", { dataListeNotes: dataListeNotes, cookie: req.cookies.role })
+                    res.render("probleme", { cookie: req.cookies.role })
                 }
 
             } catch (error) {
@@ -174,10 +174,11 @@ const controllerClasse = {
             try {
 
                 const data = await modelNote.Notes.supprimerNote(req)
+                const dataListeNotes = await modelNote.Notes.afficherToutesNotes(req)
 
                 if (data) {
 
-                    res.redirect("/notes/notesEleve/" + req.cookies.idEleve);
+                    res.render("suiviNotes", { dataListeNotes: dataListeNotes, cookie: req.cookies.role });
 
                 } else {
 
