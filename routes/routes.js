@@ -9,6 +9,9 @@ const classeCtrl = require('../controllers/ControlClasse.js');
 const router = express.Router();
 
 router.get('/', mainCtrl.affichageAccueil);
+router.get('/menuDirection', mainCtrl.affichageMenuDirection);
+router.get('/menuProf', mainCtrl.affichageMenuProf);
+router.get('/menuEleve', mainCtrl.affichageMenuEleve);
 
 // Routage Connexions
 router.get('/connexionDirecteur', directeurCtrl.affichageConnexionDirecteur);

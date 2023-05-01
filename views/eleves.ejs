@@ -1,49 +1,53 @@
-<%- include('header') %>
-    <!DOCTYPE html>
-    <html lang="en">
+<% if (cookie==='Professeur' ) { %>
+    <%- include('headerProf') %>
+        <% } else { %>
+            <%- include('headerDirection') %>
+                <% } %>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ASIMOV</title>
-    </head>
+                    <html lang="en">
 
-    <body>
-        <table class="table text-center w-100">
-            <thead class="thead-dark">
-                <tr>
-                    <th class="bg-dark text-white" scope="col">Nom</th>
-                    <th class="bg-dark text-white" scope="col">Prénom</th>
-                    <th class="bg-dark text-white" scope="col">Classe</th>
-                    <th class="bg-dark text-white" scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% dataEleves.forEach((eleve, index)=>{%>
-                    <tr id=<%=eleve.el_id%>>
-                        <td>
-                            <%=eleve.el_nom%>
-                        </td>
-                        <td>
-                            <%=eleve.el_prenom%>
-                        </td>
-                        <td>
-                            <%=eleve.cl_nom%>
-                        </td>
-                        <td>
-                            <div class="btn-group" role="group">
-                                <a href="http://localhost:3000/modifierEleves/<%=eleve.el_id%>"><button type="button"
-                                        class="btn btn-secondary">Modifier</button></a>
-                                <a href="http://localhost:3000/supprimerEleves/<%=eleve.el_id%>"><button type="button"
-                                        class="btn btn-danger">Supprimer</button></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <%})%>
-            </tbody>
-        </table>
-    </body>
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>ASIMOV</title>
+                    </head>
 
-    </html>
-    <%- include('footer') %>
+                    <body>
+                        <table class="table text-center w-100">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="bg-dark text-white" scope="col">Nom</th>
+                                    <th class="bg-dark text-white" scope="col">Prénom</th>
+                                    <th class="bg-dark text-white" scope="col">Classe</th>
+                                    <th class="bg-dark text-white" scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% dataEleves.forEach((eleve, index)=>{%>
+                                    <tr id=<%=eleve.el_id%>>
+                                        <td>
+                                            <%=eleve.el_nom%>
+                                        </td>
+                                        <td>
+                                            <%=eleve.el_prenom%>
+                                        </td>
+                                        <td>
+                                            <%=eleve.cl_nom%>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="http://localhost:3000/modifierEleves/<%=eleve.el_id%>"><button
+                                                        type="button" class="btn btn-secondary">Modifier</button></a>
+                                                <a href="http://localhost:3000/supprimerEleves/<%=eleve.el_id%>"><button
+                                                        type="button" class="btn btn-danger">Supprimer</button></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <%})%>
+                            </tbody>
+                        </table>
+                    </body>
+
+                    </html>
+                    <%- include('footer') %>

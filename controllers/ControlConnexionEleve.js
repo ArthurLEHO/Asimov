@@ -45,7 +45,7 @@ const controllerConnexionEleve = {
 	async affichageEleves(req, res) {
 
 		//Sécurité au niveau du serveur : si token principal renvoit les données, sinon renvoit sur une page de refus
-		if (req.cookies.role == "Principal") {
+		if (req.cookies.role == "Principal" || req.cookies.role == "Professeur" ) {
 
 			try {
 

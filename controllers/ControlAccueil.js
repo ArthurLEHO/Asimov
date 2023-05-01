@@ -8,7 +8,19 @@ const controllerMain = {
 
 	// Fonction pour afficher la page d'accueil
 	affichageAccueil(req, res) {
-		res.render("accueil"); // Rendre la vue "accueil"
+		res.render("accueil"); // Afficher la vue "accueil"
+	},
+
+	affichageMenuDirection(req, res) {
+		res.render("menuDirection");
+	},
+
+	affichageMenuProf(req, res) {
+		res.render("menuProf");
+	},
+
+	affichageMenuEleve(req, res) {
+		res.render("menuEleve");
 	},
 
 	// Fonction pour déconnecter l'utilisateur en supprimant les cookies de session

@@ -116,7 +116,7 @@ const controllerClasse = {
         const dataListeMatieres = await modelMatiere.Matieres.listeMatieres(req)
 
         if (req.cookies.role == "Principal" || req.cookies.role == "Professeur") {
-            res.render("addNotes", { dataListeEleves: dataListeEleves, dataListeMatieres: dataListeMatieres });
+            res.render("addNotes", { dataListeEleves: dataListeEleves, dataListeMatieres: dataListeMatieres, cookie: req.cookies.role });
         } else {
             res.render("refus")
         }
