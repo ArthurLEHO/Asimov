@@ -27,6 +27,7 @@ router.get('/deconnexion', mainCtrl.deconnexion);
 
 // Routage Notes
 router.get('/suiviNotes', noteCtrl.afficherToutesLesNotes);
+router.get('/suiviNotesEleve/:el_id', noteCtrl.affichageNotesEleve);
 router.get('/addNotes', noteCtrl.afficherAjouterNotes);
 router.post('/addNotes', noteCtrl.ajouterNote);
 router.get('/modifierNotes/:nt_id', noteCtrl.affichageUneNote);

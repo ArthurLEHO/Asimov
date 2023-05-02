@@ -24,10 +24,10 @@ mysqlconnexion.connect((err) => {
 
 const ConnexionEleve = {
 
-    async connexion() {
+    async connexion(req) {
 
         return new Promise((resolve, reject) => {
-
+            
             let requeteSQL = "SELECT * FROM eleves"
 
             mysqlconnexion.query(requeteSQL, (err, lignes) => {

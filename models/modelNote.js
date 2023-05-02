@@ -25,13 +25,10 @@ mysqlconnexion.connect((err) => {
 const Notes = {
 
     //Fonction pour tous les utilisateurs : permet d'afficher toutes les notes d'un élève en particulier
-    async afficherNotesEleve(req, res){
+    async afficherNotesEleve(req, res) {
 
-        let id = req.params.id
-        let requeteSQL = "SELECT mt_nom, nt_id, nt_resultat FROM eleves INNER JOIN notes ON el_id = nt_idEleve INNER JOIN matieres ON nt_matiere = mt_id WHERE el_id = ? "
-        
-        //On initialise un cookie pour pouvoir savoir vers quel élève rediriger dans le controller
-        res.cookie('idEleve', id)
+        let id = req.params.el_id
+        let requeteSQL = "SELECT nt_id, el_id, nt_resultat, DATE_FORMAT(nt_date, '%d/%m/%Y') as nt_date, mt_nom, el_nom, el_prenom, mt_id FROM eleves INNER JOIN notes ON eleves.el_id = notes.nt_idEleve INNER JOIN matieres ON notes.nt_matiere = matieres.mt_id WHERE eleves.el_id = ?; "
 
         return new Promise((resolve, reject) => {
 
@@ -92,7 +89,7 @@ const Notes = {
     },
 
     //Fonction pour le principal ou les professeurs : permet d'ajouter une note à un élève
-    async ajouterNotes(req){
+    async ajouterNotes(req) {
         const dateInput = req.body.nt_date;
         const date = new Date(dateInput);
         let dateBonFormat = date.toISOString().slice(0, 10);
@@ -103,11 +100,11 @@ const Notes = {
 
         let requeteSQL = "INSERT INTO notes (nt_idEleve, nt_matiere, nt_resultat, nt_date) VALUES(?,?,?,?)"
 
-        return new Promise((resolve, reject)=>{
+        return new Promise((resolve, reject) => {
 
             mysqlconnexion.query(requeteSQL, [eleve, matiere, resultat, dateBonFormat], (err, lignes, champs) => {
 
-                if(err){
+                if (err) {
 
                     return reject(err)
 
@@ -120,16 +117,16 @@ const Notes = {
     },
 
     //Fonction pour le principal ou les professeurs : permet de supprimer une note à un élève
-    async supprimerNote(req){
+    async supprimerNote(req) {
 
         let id = req.params.nt_id
         let requeteSQL = "DELETE FROM notes WHERE nt_id = ?"
 
-        return new Promise((resolve, reject)=>{
+        return new Promise((resolve, reject) => {
 
             mysqlconnexion.query(requeteSQL, [id], (err, lignes, champs) => {
 
-                if(err){
+                if (err) {
 
                     return reject(err)
 
@@ -142,18 +139,18 @@ const Notes = {
     },
 
     //Fonction pour le principal ou les professeurs : permet de modifier une note d'un élève
-    async modifierNote(req){
+    async modifierNote(req) {
 
         let id = req.params.nt_id
         let resultat = req.body.nt_resultat
         console.log(resultat, id)
         let requeteSQL = "UPDATE notes SET nt_resultat = ? WHERE nt_id = ?"
 
-        return new Promise((resolve, reject)=>{
+        return new Promise((resolve, reject) => {
 
             mysqlconnexion.query(requeteSQL, [resultat, id], (err, lignes, champs) => {
 
-                if(err){
+                if (err) {
 
                     return reject(err)
 

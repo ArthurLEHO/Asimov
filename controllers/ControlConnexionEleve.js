@@ -18,7 +18,8 @@ const controllerConnexionEleve = {
 		try {
 
 			const data = await modelConnexionEleve.ConnexionEleve.connexion()
-
+			console.log(data)
+			
 			let pseudo = req.body.pseudo
 			let mdp = req.body.mdp
 
@@ -28,7 +29,7 @@ const controllerConnexionEleve = {
 
 					res.cookie('role', 'Eleve')
 					res.cookie('id', data[element].el_id)
-					res.render("menuEleve", { dataEleve: data[element], cookie: 'Eleve', id: data[element].el_id })
+					res.render("menuEleve", { dataEleve: data[element], cookie: 'Eleve', idEleve: data[element].el_id })
 					return
 				}
 			}

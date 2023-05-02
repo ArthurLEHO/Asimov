@@ -10,38 +10,38 @@ const controllerClasse = {
     //Le principal a accès à toutes les notes de n'importe quel élève
     //Les professeurs n'ont accès aux notes de leurs élèves que si ils sont leur professeur principal
     //Les élèves ne peuvent accéder qu'à leurs notes
-    // async affichageNote(req, res) {
+    async affichageNotesEleve(req, res) {
 
     //     //Sécurité au niveau du serveur : si utilisateur identifié renvoit les données, sinon renvoit sur une page de refus
-    //     if (req.cookies.role == "Principal" || req.cookies.role == "Professeur" || req.cookies.role == "Eleve") {
+        if (req.cookies.role == "Eleve") {
 
-    //         try {
-    //             const data1 = await modelNote.Notes.afficherNotesEleve(req, res)
-    //             const data2 = await modelMatiere.Matieres.afficherMatieres()
-    //             if (data1) {
-    //                 res.render("suiviNotes", { dataNotes: data1, dataMatieres: data2, cookie: req.cookies.role, idEleve: req.cookies.idEleve })
+            try {
+                const dataNotesEleve = await modelNote.Notes.afficherNotesEleve(req)
 
-    //             } else {
-    //                 res.render("probleme", { cookie: req.cookies.role })
-    //             }
+                if (dataNotesEleve) {
+                    res.render("suiviNotesEleve", { dataNotesEleve: dataNotesEleve, cookie: req.cookies.role })
 
-    //         } catch (error) {
+                } else {
+                    res.render("probleme", { cookie: req.cookies.role })
+                }
 
-    //             console.log(error)
-    //         }
+            } catch (error) {
 
-    //     } else {
+                console.log(error)
+            }
 
-    //         try {
+        } else {
 
-    //             res.render("refus")
+            try {
 
-    //         } catch (error) {
+                res.render("refus")
 
-    //             console.log(error)
-    //         }
-    //     }
-    // },
+            } catch (error) {
+
+                console.log(error)
+            }
+        }
+    },
 
     async afficherToutesLesNotes(req, res) {
         if (req.cookies.role == "Principal" || req.cookies.role == "Professeur" || req.cookies.role == "Eleve") {
